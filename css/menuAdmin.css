@@ -1,0 +1,32 @@
+nav ul li:hover .hijo {
+	display:block;
+}
+ 
+nav ul li .hijo {
+	display: none;
+	background:#333;
+	position: absolute;
+	width: 150%;
+	z-index:1000;
+}
+nav ul li ul {
+	display: block;
+}
+ 
+nav ul li .hijo li {
+	display:block;
+	overflow: hidden;
+	border-bottom: 1px solid rgba(255,255,255,.5);
+}
+ 
+nav ul li .hijo li a {
+	display: block;
+}
+ 
+nav ul li .hijo li a{
+	float: right;
+	position: relative;
+	top:3px;
+	margin-right:0;
+	margin-left:10px;
+}

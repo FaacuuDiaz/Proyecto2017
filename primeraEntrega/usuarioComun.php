@@ -11,7 +11,7 @@
 </head>
 <body>
 	<header><h1>El titulo de INICIO que se te cante</h1></header>
-	<p>Bienvenido Usuario Admin</p>
+	<p>Bienvenido Usuario Comun</p>
 	<nav>
 		<ul>
 			<li><a href="../index.php">Cerrar Sesion</a></li>
@@ -20,13 +20,6 @@
 					<li><a href="/primeraEntrega/altaPaciente.php">Alta Paciente</a></li>
 					<li><a href="/primeraEntrega/bajaPaciente.php">Baja Paciente</a></li>
 					<li><a href="/primeraEntrega/modificarPaciente.php">Modificacion Paciente</a></li>
-				</ul>
-			</li>
-			<li class="submenu"><a>Usuarios</a>
-				<ul class="hijo">
-					<li><a href="/primeraEntrega/altaUsuario.php">Alta Usuario</a></li>
-					<li><a href="/primeraEntrega/bajaUsuario.php">Baja Usuario</a></li>
-					<li><a href="/primeraEntrega/modificarUsuario.php">Modificacion Usuario</a></li>
 				</ul>
 			</li>
 		</ul>
