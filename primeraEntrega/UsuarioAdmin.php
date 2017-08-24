@@ -24,7 +24,7 @@
 			<li class="submenu"><a>Usuarios</a>
 				<ul class="hijo">
 					<li><a href="./altaUsuario.php">Alta Usuario</a></li>
-					<li><a href="./listarUsuarios.php">Listar Usuarios</a></li>
+					<li><a href="./UsuarioListar.php">Listar Usuarios</a></li>
 				</ul>
 			</li>
 		</ul>

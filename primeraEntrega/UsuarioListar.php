@@ -13,10 +13,10 @@
     <header><h1>El titulo de INICIO que se te cante</h1></header>
     <nav>
         <ul>
-            <li><a href="../index.php">Inicio</a></li>
+            <li><a href="./UsuarioAdmin.php">Inicio</a></li>
         </ul>
     </nav>
-    <p>Listar Pacientes</p>
+    <p>Listar Usuarios</p>
     <table>
         <tr>
             <th>Nombre</th>
