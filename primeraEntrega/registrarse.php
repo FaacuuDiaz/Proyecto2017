@@ -28,6 +28,6 @@
 
 		<input type="submit" name="submit">
 	</form>
-	<footer>Pilis+Plomero@2017all Rights Reserved</footer>
+	<footer>Pilis@2017all Rights Reserved</footer>
 </body>
 </html>

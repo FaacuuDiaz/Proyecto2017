@@ -29,6 +29,6 @@
         <input name="pass" placeholder="Ingrese la contraseña" type="text">
         <input name="submit" type="submit" value="ingresar">
     </form>
-    <footer>Pilis+Plomero@2017all Rights Reserved</footer>
+    <footer>Pilis@2017all Rights Reserved</footer>
 </body>
 </html>
