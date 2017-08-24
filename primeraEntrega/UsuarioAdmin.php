@@ -17,16 +17,15 @@
 			<li><a href="../index.php">Cerrar Sesion</a></li>
 			<li class="submenu"><a>Pacientes</a>
 				<ul class="hijo">
-					<li><a href="/primeraEntrega/altaPaciente.php">Alta Paciente</a></li>
-					<li><a href="/primeraEntrega/bajaPaciente.php">Baja Paciente</a></li>
-					<li><a href="/primeraEntrega/modificarPaciente.php">Modificacion Paciente</a></li>
+					<li><a href="./PacienteRegistrar.php">Alta Paciente</a></li>
+					<li><a href="./PacienteListar.php">Listar Paciente</a></li>
 				</ul>
 			</li>
 			<li class="submenu"><a>Usuarios</a>
 				<ul class="hijo">
-					<li><a href="/primeraEntrega/altaUsuario.php">Alta Usuario</a></li>
-					<li><a href="/primeraEntrega/bajaUsuario.php">Baja Usuario</a></li>
-					<li><a href="/primeraEntrega/modificarUsuario.php">Modificacion Usuario</a></li>
+					<li><a href="./altaUsuario.php">Alta Usuario</a></li>
+					<li><a href="./bajaUsuario.php">Baja Usuario</a></li>
+					<li><a href="./modificarUsuario.php">Modificacion Usuario</a></li>
 				</ul>
 			</li>
 		</ul>
