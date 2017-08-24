@@ -14,7 +14,7 @@
 	<header><h1>El titulo de INICIO que se te cante</h1></header>
 	<nav>
 		<ul>
-			<li><a href="../index.html">Inicio</a></li>
+			<li><a href="../index.php">Inicio</a></li>
 		</ul>
 	</nav>
 	<p>Registrarse</p>

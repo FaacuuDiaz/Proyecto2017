@@ -4,7 +4,7 @@
 	<link rel="stylesheet" type="text/css" href="css/menu.css">
 	<link rel="stylesheet" type="text/css" href="css/header.css">
 	<link rel="stylesheet" type="text/css" href="css/formularios.css">
-	<link rel="stylesheet" type="text/css" href="/css/footer.css">
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
 <head>
 	<title>Inicio</title>
 </head>
@@ -12,8 +12,8 @@
 	<header><h1>El titulo de INICIO que se te cante</h1></header>
 	<nav>
 		<ul>
-			<li><a href="/primeraEntrega/iniciarSession.html">Iniciar Sesion</a></li>
-			<li><a href="/primeraEntrega/registrarse.html">Registrarse</a></li>
+			<li><a href="./primeraEntrega/iniciarSession.php">Iniciar Sesion</a></li>
+			<li><a href="./primeraEntrega/registrarse.php">Registrarse</a></li>
 		</ul>
 	</nav>
 	<br><br><br><br>

@@ -12,8 +12,8 @@
 	<header><h1>El titulo de INICIO que se te cante</h1></header>
 	<nav>
 		<ul>
-			<li><a href="/primeraEntrega/iniciarSession.html">Cerrar Sesion</a></li>
-			<li><a href="/primeraEntrega/registrarse.html">Registrarse</a></li>
+			<li><a href="/primeraEntrega/iniciarSession.php">Cerrar Sesion</a></li>
+			<li><a href="/primeraEntrega/registrarse.php">Registrarse</a></li>
 		</ul>
 	</nav>
 
