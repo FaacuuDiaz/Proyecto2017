@@ -5,20 +5,23 @@ ul {
     overflow: hidden;
     background-color: #333;
 }
-li {
-	float: left;
-    border-right:1px solid #bbb;
 
+li {
+    float: left;
+    border-right: 1px solid #bbb;
 }
+
 nav ul li {
-	padding: 10px;
+    padding: 10px;
 }
+
 nav ul li a {
-	display: block-inline;
-	text-align: center;
+    display: block-inline;
+    text-align: center;
     text-decoration: none;
     color: white;
 }
-nav ul :hover{
-	background-color: green;
+
+nav ul :hover {
+    background-color: green;
 }
