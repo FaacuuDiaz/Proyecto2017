@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/menu.css">
 	<link rel="stylesheet" type="text/css" href="../css/header.css">
-	<link rel="stylesheet" type="text/css" href="../css/formularios.css">
+	<link rel="stylesheet" type="text/css" href="../css/formularioPR.css">
 	<link rel="stylesheet" type="text/css" href="../css/footerR.css">
 
 <head>

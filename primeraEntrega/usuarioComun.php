@@ -17,8 +17,8 @@
 			<li><a href="../index.php">Cerrar Sesion</a></li>
 			<li class="submenu"><a>Pacientes</a>
 				<ul class="hijo">
-					<li><a href="./PacienteRegistrar.php">Alta Paciente</a></li>
-					<li><a href="./PacienteListar.php">Listar Paciente</a></li>
+					<li><a href="./pacienteRegistrar.php">Alta Paciente</a></li>
+					<li><a href="./pacienteListar.php">Listar Paciente</a></li>
 				</ul>
 			</li>
 		</ul>
