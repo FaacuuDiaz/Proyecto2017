@@ -1,0 +1,17 @@
+table {
+	width: 50%;
+	text-align: center;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+table th {
+    background-color: #4CAF50;
+    color: white;
+}
+tr td {
+	text-align: center;
+}

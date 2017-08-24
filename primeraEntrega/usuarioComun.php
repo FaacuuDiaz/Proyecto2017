@@ -18,8 +18,7 @@
 			<li class="submenu"><a>Pacientes</a>
 				<ul class="hijo">
 					<li><a href="/primeraEntrega/altaPaciente.php">Alta Paciente</a></li>
-					<li><a href="/primeraEntrega/bajaPaciente.php">Baja Paciente</a></li>
-					<li><a href="/primeraEntrega/modificarPaciente.php">Modificacion Paciente</a></li>
+					<li><a href="/primeraEntrega/listarPaciente.php">Listar Pacientes</a></li>
 				</ul>
 			</li>
 		</ul>
