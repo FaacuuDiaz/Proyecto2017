@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header><h1>Hospital Gutierrez</h1></header>
-	<nav>
+	<nav class="menu">
 		<ul>
 			<li><a href="../index.php">Inicio</a></li>
 		</ul>

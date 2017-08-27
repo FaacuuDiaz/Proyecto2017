@@ -14,10 +14,23 @@
 	<header><h1>El titulo de INICIO que se te cante</h1></header>
 	<nav class="menu">
 		<ul>
-			<li><a href="../index.php">Inicio</a></li>
+			<li><a href="usuarioAdmin.php">Inicio</a></li>
+			<li class="submenu"><a>Pacientes</a>
+                <ul>
+                    <li><a href="./pacienteRegistrar.php">Alta Paciente</a></li>
+                    <li><a href="./pacienteListar.php">Listar Paciente</a></li>
+                </ul>
+            </li>
+            <li class="submenu"><a>Usuarios</a>
+                <ul>
+                    <li><a href="./registrarse.php">Alta Usuario</a></li>
+                    <li><a href="./usuarioListar.php">Listar Usuarios</a></li>
+
+                </ul>
+            </li>
 		</ul>
 	</nav>
-	<p>Registrarse</p>
+	<p>Modificar Usuario</p>
 	<form>
 		Nombre: <input type="text" name="name" placeholder="Ingrese el Nombre">
 		Apellido: <input type="text" name="lastname" placeholder="Ingrese el Apellido">
@@ -26,7 +39,7 @@
 		Email: <input type="email" name="email" placeholder="ejemplo@gmail.com">
 		Fecha de Nacimiento: <input type="date" name="nacimiento">
 
-		<input type="submit" name="submit">
+		<input type="submit" name="submit" value="guardar cambios">
 	</form>
 	<footer>Pilis@2017all Rights Reserved</footer>
 </body>

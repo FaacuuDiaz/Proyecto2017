@@ -7,7 +7,7 @@
     <link href="../css/formularios.css" rel="stylesheet" type="text/css">
     <link href="../css/footer.css" rel="stylesheet" type="text/css">
     <head>
-        <title>Listar Pacientes</title>
+        <title>Listar Usuarios</title>
     </head>
     <body>
     <header><h1>El titulo de INICIO que se te cante</h1></header>
@@ -29,13 +29,12 @@
             </li>
         </ul>
     </nav>
-    <p>Listar Pacientes</p>
+    <p>Listar Usuarios</p>
     <table>
         <tr>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Documento</th>
-            <th>telefono</th>
             <th>Direccion</th>
             <th>Obra Social</th>
         </tr>
@@ -43,24 +42,22 @@
             <td>Maria</td>
             <td>Cercato</td>
             <td>37684596</td>
-            <td>4524212</td>
             <td>22 y 38</td>
             <td>Osde</td>
-            <td><a href="pacienteModificar.php"><img src="../img/mas.png" alt="Listar" height="40" width="40"></a></td>
-            <td><a href="pacienteEliminar.php"><img src="../img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>
+            <td><a href="usuarioModificar.php"><img src="../img/mas.png" alt="Listar" height="40" width="40"></a></td>
+            <td><a href="usuarioEliminar.php"><img src="../img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>
         </tr>
         <tr>
-            <td>Nicolas</td>
-            <td>Ruffolo</td>
-            <td>38313821</td>
-            <td>4211232</td>
-            <td>140 y 49</td>
-            <td>Ughtra</td>
-            <td><a href="pacienteModificar.php"><img src="../img/mas.png" alt="Listar" height="40" width="40"></a></td>
-            <td><a href="pacienteEliminar.php"><img src="../img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>
+            <td>Facundo</td>
+            <td>Zubirrain</td>
+            <td>38123821</td>
+            <td>135 y 32</td>
+            <td>Osecac</td>
+            <td><a href="usuarioModificar.php"><img src="../img/mas.png" alt="Listar" height="40" width="40"></a></td>
+            <td><a href="usuarioEliminar.php"><img src="../img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>
         </tr>
     </table>
-    
+
     <footer>Pilis+Plomero@2017all Rights Reserved</footer>
 </body>
 </html>

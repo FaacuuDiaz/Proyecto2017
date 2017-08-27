@@ -10,7 +10,7 @@
 </head>
 <body>
 	<header><h1>El titulo de INICIO que se te cante</h1></header>
-	<nav>
+	<nav class="menu">
 		<ul>
 			<li><a href="./primeraEntrega/iniciarSession.php">Iniciar Sesion</a></li>
 			<li><a href="./primeraEntrega/registrarse.php">Registrarse</a></li>

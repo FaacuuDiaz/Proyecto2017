@@ -2,7 +2,6 @@
 <html>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/menu.css">
-	<link rel="stylesheet" type="text/css" href="../css/menuAdmin.css">
 	<link rel="stylesheet" type="text/css" href="../css/header.css">
 	<link rel="stylesheet" type="text/css" href="../css/formularios.css">
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
@@ -12,7 +11,7 @@
 <body>
 	<header><h1>El titulo de INICIO que se te cante</h1></header>
 	<p>Bienvenido Usuario Comun</p>
-	<nav>
+	<nav class="menu">
 		<ul>
 			<li><a href="../index.php">Cerrar Sesion</a></li>
 			<li class="submenu"><a>Pacientes</a>

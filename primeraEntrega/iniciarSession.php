@@ -16,7 +16,7 @@
         El titulo de INICIO que se te cante
     </h1>
     </header>
-    <nav>
+    <nav class="menu">
         <ul>
             <li><a href="../index.php">Inicio</a></li>
         </ul>

@@ -1,6 +1,8 @@
 table {
+	margin: auto;
 	width: 50%;
 	text-align: center;
+	padding-top: 30px;
 }
 
 th, td {

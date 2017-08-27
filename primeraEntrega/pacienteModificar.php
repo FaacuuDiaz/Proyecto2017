@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header><h1>Hospital Gutierrez</h1></header>
-	<nav>
+	<nav class="menu">
 		<ul>
 			<li><a href="../index.php">Inicio</a></li>
 		</ul>
@@ -29,7 +29,7 @@
 		Fecha de Nacimiento: <input type="date" name="nacimiento">
 		Telefono: <input type="text" name="telefono" placeholder="Ingresa el telefono">
 		Direccion: <input type="text" name="direccion" placeholder="Ingresa la direccion">
-		<input type="submit" name="submit">
+		<input type="submit" name="submit" value="guardar cambios">
 	</form>
 
 	<footer>Pilis@2017all Rights Reserved</footer>
