@@ -10,7 +10,7 @@
         <title>Listar Pacientes</title>
     </head>
     <body>
-    <header><h1>El titulo de INICIO que se te cante</h1></header>
+    <header><h1>Hospital Gutierrez</h1></header>
     <nav class="menu">
         <ul>
             <li><a href="./usuarioAdmin.php">Inicio</a></li>
@@ -60,7 +60,7 @@
             <td><a href="pacienteEliminar.php"><img src="../img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>
         </tr>
     </table>
-    
+
     <footer>Pilis+Plomero@2017all Rights Reserved</footer>
 </body>
 </html>

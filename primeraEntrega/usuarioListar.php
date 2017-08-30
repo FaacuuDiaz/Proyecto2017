@@ -10,7 +10,7 @@
         <title>Listar Usuarios</title>
     </head>
     <body>
-    <header><h1>El titulo de INICIO que se te cante</h1></header>
+    <header><h1>Hospital Gutierrez</h1></header>
     <nav class="menu">
         <ul>
             <li><a href="./usuarioAdmin.php">Inicio</a></li>

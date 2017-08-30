@@ -13,7 +13,7 @@
     <body>
     <header>
     <h1>
-        El titulo de INICIO que se te cante
+        Hospital Gutierrez
     </h1>
     </header>
     <nav class="menu">
