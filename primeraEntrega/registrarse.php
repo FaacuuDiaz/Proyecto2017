@@ -28,6 +28,6 @@
 
 		<input type="submit" name="submit">
 	</form>
-	<footer>Pilis@2017all Rights Reserved</footer>
+	<footer>Proyecto de Software 2017 - Hospital Dr. Ricardo Gutierrez</footer>
 </body>
 </html>

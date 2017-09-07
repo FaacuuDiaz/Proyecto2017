@@ -4,11 +4,13 @@
 	<link rel="stylesheet" type="text/css" href="../css/menu.css">
 	<link rel="stylesheet" type="text/css" href="../css/header.css">
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
+	<link rel="stylesheet" type="text/css" href="../css/botonBuscar.css">
+	<link rel="stylesheet" type="text/css" href="../css/contenido.css"></li>
 <head>
 	<title>Inicio</title>
 </head>
 <body>
-	<header><h1>Hospital Gutierrez</h1></header>
+	<header><h1>Hospital Dr. Ricardo Gutierrez</h1></header>
 	<p>Bienvenido Usuario Admin</p>
 	<nav class="menu">
 		<ul>
@@ -21,18 +23,23 @@
 			</li>
 			<li class="submenu"><a>Usuarios</a>
 				<ul>
-					<li><a href="./registrarse.php">Alta Usuario</a></li>
+					<li><a href="./registrarse.php">Registrar</a></li>
+					<li><a href="#">Roles</a></li>
+					<li><a href="#">Permisos</a></li>
 					<li><a href="./usuarioListar.php">Listar Usuarios</a></li>
+					<li><a href="#">Configuracion</a></li>
 
 				</ul>
 			</li>
-			<li><a href="./darTurno.php">Turnos</a></li>
-			<form id="searchform" action="./busquedaPaciente.php">
-<input type="text" placeholder="Buscar..."/><button type="submit">Ir</button>
-</form>
+			<form id="searchform" action="primeraEntrega/busquedaPaciente.php">
+				<input type="text" placeholder="Buscar..."/>
+				<button>Ir</button>
+			</form>
 		</ul>
 	</nav>
-
-	<footer class="footer">PilisCercato@2017all Rights Reserved</footer>
+	<div style="margin-top: 100px">
+		Bienvenido al sistema de gestion de pacientes y usuarios de el Hospital, ante cualquier incomveniente o duda puede revisar el FAQ's , y  en caso de no encontrar respuesta puede mandar un mail al departamento de sistemas del Hospital.
+	</div>
+	<footer class="foot">Proyecto de Software 2017 - Hospital Dr. Ricardo Gutierrez</footer>
 </body>
 </html>

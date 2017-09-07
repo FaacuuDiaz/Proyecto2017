@@ -11,7 +11,6 @@
 	<header><h1>Hospital Gutierrez</h1></header>
 	<p>Bienvenido Usuario Comun</p>
 	<nav class="menu">
-	<div>
 		<ul>
 			<li><a href="../index.php">Cerrar Sesion</a></li>
 			<li class="submenu"><a>Pacientes</a>
@@ -21,11 +20,12 @@
 				</ul>
 			</li>
 			<li><a href="./darTurno.php">Turnos</a></li>
-<form id="searchform" action="./busquedaPaciente.php">
-<input type="text" placeholder="Buscar..."/><button type="submit">Ir</button>
-</form>
-	</ul></nav>
-
+			<form id="searchform" action="./busquedaPaciente.php">
+				<input type="text" placeholder="Buscar..."/>
+				<button type="submit">Ir</button>
+			</form>
+		</ul>
+	</nav>
 	<footer class="footer">PilisCercato@2017all Rights Reserved</footer>
 </body>
 </html>

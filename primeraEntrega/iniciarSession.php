@@ -27,8 +27,8 @@
         <input name="user" placeholder="Ingrese el usuario" type="text">
         Contraseña:
         <input name="pass" placeholder="Ingrese la contraseña" type="text">
-        <input name="submit" type="submit" value="ingresar">
+        <input name="submit" type="submit" value="Aceptar">
     </form>
-    <footer>Pilis@2017all Rights Reserved</footer>
+    <footer class="foot">Proyecto de Software 2017 - Hospital Dr. Ricardo Gutierrez</footer>
 </body>
 </html>
