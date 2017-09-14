@@ -10,10 +10,15 @@ footer {
     color: white;
     font-weight: bold;
 }
-
+.footerRelative{
+    position: relative;
+}
 @media(max-width: 800px) {
     .foot {
         position: absolute;
+    }
+    .footer{
+        position: relative;
     }
     footer {
         font-style: italic;
@@ -33,6 +38,12 @@ footer {
         position: relative;
     }
     .footer{
+        position: absolute;
+    }
+    .footerRelative{
+        position: relative;
+    }
+    .footerAbsolute{
         position: absolute;
     }
 }

@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/menu.css">
 	<link rel="stylesheet" type="text/css" href="../css/header.css">
 	<link rel="stylesheet" type="text/css" href="../css/formularioPR.css">
-	<link rel="stylesheet" type="text/css" href="../css/footerR.css">
+	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 
 <head>
 	<title>Registrar Paciente</title>

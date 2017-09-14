@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/menu.css">
 	<link rel="stylesheet" type="text/css" href="../css/header.css">
 	<link rel="stylesheet" type="text/css" href="../css/formularios.css">
-	<link rel="stylesheet" type="text/css" href="../css/footerR.css">
+	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 
 <head>
-	<title>Registrarse</title>
+	<title>Registrar Usuario</title>
 </head>
 <body>
 	<header><h1>Hospital Gutierrez</h1></header>
@@ -24,10 +24,8 @@
 		Usuario: <input type="text" name="user" placeholder="Ingrese el usuario">
 		Contraseña: <input type="text" name="pass" placeholder="Ingrese la contraseña">
 		Email: <input type="email" name="email" placeholder="ejemplo@gmail.com">
-		Fecha de Nacimiento: <input type="date" name="nacimiento">
-
-		<input type="submit" name="submit">
+		<input type="submit" name="submit" value="Registrarse">
 	</form>
-	<footer>Proyecto de Software 2017 - Hospital Dr. Ricardo Gutierrez</footer>
+	<footer class="footerRelative">Proyecto de Software 2017 - Hospital Dr. Ricardo Gutierrez</footer>
 </body>
 </html>
