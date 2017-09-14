@@ -15,7 +15,7 @@ input[type=submit] {
     cursor: pointer;
 }
 
-input[type=text], [type=email], [type=date] {
+input[type=text], [type=email], [type=date], [type=password] {
     text-align: center;
     display: block;
     width: 50%;

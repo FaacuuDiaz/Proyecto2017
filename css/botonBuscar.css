@@ -5,6 +5,9 @@ nav ul form button{
 	background-color: #4CAF50;
 
 }
+body div form{ /* este es el botonResponsive */
+	display: none;
+}
 @media(max-width: 500px){
 nav ul form input{
 	height: 35px;
@@ -23,5 +26,26 @@ nav ul form input{
 }
 nav ul form button{
 	display: none;
+
+}
+/* Esta es el input y el boton de busqueda Responsive*/
+.botonResponsive{
+	margin-top: 20%;
+}
+body div form{
+	display: block
+
+}
+
+body div form input{
+	height: 35px;
+	width: 50%;
+	margin-left: 80px;
+}
+body div form button{
+	height: 35px;
+	background-color: #4CAF50;
+	width: 50px;
+}
 
 }
