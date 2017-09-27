@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-
-    <form action="./usuarioAdmin.php">
+	{% if errorLogin %}
+		<script language="JavaScript" type="text/javascript">
+			alert("El usuario o la contraseña son incorrectos");
+		</script>
+	{%endif%}
+    <form action="../controller/access_user.php" method="POST" >
         Usuario:
         <input name="user" pattern="[a-zA-Z]{4,15}$" placeholder="Ingrese el usuario" data-error="Ingresar usuario valido."
         type="text" required>

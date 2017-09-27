@@ -8,18 +8,24 @@
 	<link rel="stylesheet" type="text/css" href="../view/css/header.css">
 	<link rel="stylesheet" type="text/css" href="../view/css/footer.css">
 	<link rel="stylesheet" type="text/css" href="../view/css/textoIntro.css">
+	
+
 
 	<title>Inicio</title>
 </head>
 <body>
 	<header><h1>Hospital DR. Ricardo Gutierrez</h1></header>
 	{% block nav %}
-		{% if rol_usuario_actual is defined %}
-	    	{% if rol_usuario_actual != 'no_habilitado' %}
-	       		{% include 'nav_'~rol_usuario_actual~'.html' %}
-	      	{% else %}
-	        	{% include 'nav_index.html' %}
-	      	{% endif%}
+		{% if rol_user is defined %}
+			{% if rol_user != 'blocked' %}		
+		    	{% if rol_user == 'admin' %}
+		       		{% include 'nav_admin.html' %}
+		      	{% else %}
+		        	{% include 'nav_common.html' %}
+		      	{% endif%}
+		    {% else %}
+	      		{% include 'nav_blocked.html' %}
+	   	 	{% endif %} 	
 	    {% else %}
 	      	{% include 'nav_index.html' %}
 	    {% endif %}
