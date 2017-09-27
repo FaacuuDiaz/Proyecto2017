@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <p> Modificar Datos Demograficos</p>
+    <div class="row">
+ <div class="col-sm-4"> </div>
+  <div class="col-sm-4">
+  	<form class="form-group" action="./inicio.html">
+
+  		<div>
+  		<label class="radio-inline">Heladera: 	</label>
+  		<label class="radio-inline"><input type="radio" name="Heladera" required>Si</label>
+		<label class="radio-inline"><input type="radio" name="Heladera">No</label>
+		</div>
+		<div>
+  		<label class="radio-inline">Electricidad: 	</label>
+  		<label class="radio-inline"><input type="radio" name="Electricidad" required>Si</label>
+		<label class="radio-inline"><input type="radio" name="Electricidad">No</label>
+		</div>
+		<div>
+  		<label class="radio-inline">Mascota(s): 	</label>
+  		<label class="radio-inline"><input type="radio" name="Mascota" required>Si</label>
+		<label class="radio-inline"><input type="radio" name="Mascota">No</label>
+		</div>
+  		<label for="sel1">Tipo de Vivienda:</label>
+  		<select class="form-control" id="sel1" required>
+    		<option>1</option>
+    		<option>2</option>
+   			<option>3</option>
+  		</select>
+  		<label for="sel2">Tipo de Calefacción:</label>
+  		<select class="form-control" id="sel2" required>
+    		<option>1</option>
+    		<option>2</option>
+  		</select>
+  		<label for="sel3">Tipo de Agua:</label>
+  		<select class="form-control" id="sel3" required>
+    		<option>1</option>
+    		<option>2</option>
+  		</select>
+  		<BR>
+  		 <input name="submit" class="btn btn-success" type="submit" value="Aceptar">
+  	</form>
+
+  </div>
+   <div class="col-sm-4"></div>
+</div>
+{% endblock %}
