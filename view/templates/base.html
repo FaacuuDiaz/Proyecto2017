@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no ,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../view/css/menu.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/header.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/footer.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/textoIntro.css">
+	
+
+
+	<title>Inicio</title>
+</head>
+<body>
+	<header><h1>Hospital DR. Ricardo Gutierrez</h1></header>
+	{% block nav %}
+		{% if rol_user is defined %}
+			{% if rol_user != 'blocked' %}		
+		    	{% if rol_user == 'admin' %}
+		       		{% include 'nav_admin.html' %}
+		      	{% else %}
+		        	{% include 'nav_common.html' %}
+		      	{% endif%}
+		    {% else %}
+	      		{% include 'nav_blocked.html' %}
+	   	 	{% endif %} 	
+	    {% else %}
+	      	{% include 'nav_index.html' %}
+	    {% endif %}
+	{% endblock %}
+	{% block content %} {% endblock%}
+	{% block footer %}
+       <footer>©Proyecto de Software 2017 -Grupo 30.
+          {{ now |date("d/m/Y") }} </footer>
+    {% endblock %}
+</body>
+</html>

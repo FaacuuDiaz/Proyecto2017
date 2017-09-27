@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+	{% if errorLogin %}
+		<script language="JavaScript" type="text/javascript">
+			alert("El usuario o la contraseña son incorrectos");
+		</script>
+	{%endif%}
+    <form action="../controller/access_user.php" method="POST" >
+        Usuario:
+        <input name="user" pattern="[a-zA-Z]{4,15}$" placeholder="Ingrese el usuario" data-error="Ingresar usuario valido."
+        type="text" required>
+        Contraseña:
+        <input name="pass" placeholder="Ingrese la contraseña" pattern="[a-z0-9A-Z]{6,12}$" data-error="Ingresar contraseña valida."
+        type="password" required>
+        <input name="submit" type="submit" value="Aceptar">
+    </form>
+
+{%endblock%}

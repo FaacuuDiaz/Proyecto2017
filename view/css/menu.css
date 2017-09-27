@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.menu {
+    width: 100%;
+    float: left;
+}
+
+.menu ul {
+    background: #333;
+    display: flex;
+    list-style: none;
+}
+
+.menu ul ul {
+    display: none;
+}
+
+.menu a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    background: green;
+}
+
+.menu ul li:hover ul {
+    display: block;
+    position: absolute;
+}
+
+.menu ul form {
+    float: right;
+    display: flex;
+    list-style: none;
+}
+
+#searchform {
+    padding: 8px;
+    float: right;
+}
+
+#searchform button {
+    position: relative;
+    float: right;
+    border: 0;
+    cursor: pointer;
+    width: 40px;
+    font-size: 15px;
+    color: black;
+    border-radius: 0 3px 3px 0;
+}
+
+#searchform button:hover {
+    background: green;
+}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+	<p>Configuracion del Hospital</p>
+	<form action="config_hospital.php" method="POST">
+
+		<input type="hidden" name="update" value="1">
+
+		Titulo:<input type="text" name="title" placeholder="Ingrese el titulo" value="{{info[0]['titulo']}}" style="width: 200px;"> <br>
+
+		Descripcion:<textarea name="descrpt" style="height: 100px; width: 200px;" placeholder="Ingrese la descripcion" >{{info[0]['descripcion']}}</textarea><br>
+
+		Email: <input type="email" name="email" value="{{info[0]['email']}}"><br>
+
+
+		Paginacion por Listado<input type="number" name="pagination" placeholder="Numero de pagination" value="{{info[0]['paginacion']}}"><br>
+		
+		Estado de la Pagina:<select name="enabled"><br>
+								{% if info[0]['habilitado'] == 1%}
+									<option value="{{1}}" selected> {{'Habilitado'}}</option>
+									<option value="{{0}}"> {{'Bloqueado'}}</option>
+								{% else %}
+									<option value="{{0}}" selected> {{'Bloqueado'}}</option>
+									<option value="{{1}}"> {{'Habilitado'}}</option>
+								{% endif %}	
+							</select><br>
+
+		<input type="submit" name="Aceptar" value="Aceptar">					
+
+	</form>
+{% endblock %}
