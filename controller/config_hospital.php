@@ -13,7 +13,7 @@
 		if(!isset($_POST['update'])){
 			//echo "entro al segundo if";
 			$info=Repository_Hospital::get_privateInfo();
-			$template=$twig->loadTemplate("config_hospital.html");
+			$template=$twig->loadTemplate("config_hospital.twig");
 			$template->display(array("rol_user"=>$_SESSION['rol'],"info"=>$info));
 		}	
 		else{

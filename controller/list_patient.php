@@ -9,7 +9,7 @@
 
 	if(isset($_SESSION['rol'])){
 		$patiens=Repository_Patient::get_allPatients();
-		$template=$twig->loadTemplate('list_patient.html');
+		$template=$twig->loadTemplate('list_patient.twig');
 		$template->display(array("rol_user"=>$_SESSION['rol'],"patients"=>$patiens));
 	}
 	else{

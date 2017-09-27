@@ -10,7 +10,7 @@
 	if($_SESSION['rol']=='admin' || $_SESSION['rol']=='pediatra' || $_SESSION['rol']=='recepcionista'){
 
 		$user=Repository_User::get_user($_SESSION['user']);
-		$template = $twig -> loadTemplate('profile_user.html');
+		$template = $twig -> loadTemplate('profile_user.twig');
 		$template -> display(array('rol_user'=>$_SESSION['rol'],'info'=>$user));
 	}
 	else{

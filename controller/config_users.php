@@ -10,7 +10,7 @@
 	$mi_rol=$_SESSION['rol'];
 	if($mi_rol == 'admin'){
 		$users=Repository_User::get_allUsers($_SESSION['id']);
-		$template= $twig -> loadTemplate('config_users.html');
+		$template= $twig -> loadTemplate('config_users.twig');
 		$template-> display(array('rol_user'=>$mi_rol, 'users' => $users));
 	}
 	else{

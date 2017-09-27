@@ -16,7 +16,7 @@
 		if($update = 1) {
 			$id=$_SESSION['id'];
 			Repository_User::update_user($id,$name,$lastname,$user,$pass,$email);
-			$template=$twig->loadTemplate('inicio.html');
+			$template=$twig->loadTemplate('inicio.twig');
 			$template->display(array('rol_user'=>$_SESSION['rol']));
 		}
 	}
@@ -25,7 +25,7 @@
 		$usr=Repository_User::get_user($user);
 		Repository_User::insert_role(3,$usr[0][0]);//le asigno como rol Recepcionista por defecto
 
-		$template=$twig->loadTemplate('login.html');
+		$template=$twig->loadTemplate('login.twig');
 		$template->display(array());
 	}
 
