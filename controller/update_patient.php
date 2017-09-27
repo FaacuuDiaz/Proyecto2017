@@ -13,7 +13,7 @@
 		$patien=Repository_Patient::get_patient($id);
 		$docs=Repository_Patient::get_TypeDocs();
 		$social=Repository_Patient::get_SocialWorks();
-		$template=$twig->loadTemplate('register_patient.html');
+		$template=$twig->loadTemplate('register_patient.twig');
 		$template->display(array("rol_user"=>$_SESSION['rol'],"patient"=>$patien,"update"=>1,"docs"=>$docs,"social"=>$social));
 	}
 	else{

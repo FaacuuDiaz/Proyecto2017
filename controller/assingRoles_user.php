@@ -9,7 +9,7 @@
 	if($_SESSION['rol']=='admin'){
 		$users=Repository_User::get_usersAndRoles($_SESSION['id']);
 		$roles=Repository_User::all_roles();
-		$template=$twig->loadTemplate('assingRoles_user.html');
+		$template=$twig->loadTemplate('assingRoles_user.twig');
 		$template->display(array("rol_user"=>$_SESSION['rol'],"users"=>$users,"roles"=>$roles));
 	}
 	else{

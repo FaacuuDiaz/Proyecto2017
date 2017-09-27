@@ -16,16 +16,16 @@
 	if ($habilitado==1 || $ok ){
 		if(isset($_SESSION['rol'])){
 			$mi_rol=$_SESSION['rol'];
-			$template = $twig -> loadTemplate('inicio.html');
+			$template = $twig -> loadTemplate('inicio.twig');
 			$template -> display(array('rol_user'=>$mi_rol));
 		}
 		else{
-			$template= $twig->loadTemplate('inicio.html');
+			$template= $twig->loadTemplate('inicio.twig');
 			$template->display(array());
 		}
 	}	
 	else{
-		$template= $twig->loadTemplate('blocked.html');
+		$template= $twig->loadTemplate('blocked.twig');
 		$template->display(array('rol_user'=>'blocked'));
 	}	
 ?>
