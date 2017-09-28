@@ -19,15 +19,15 @@
 		{% if rol_user is defined %}
 			{% if rol_user != 'blocked' %}		
 		    	{% if rol_user == 'admin' %}
-		       		{% include 'nav_admin.html' %}
+		       		{% include 'nav_admin.twig' %}
 		      	{% else %}
-		        	{% include 'nav_common.html' %}
+		        	{% include 'nav_common.twig' %}
 		      	{% endif%}
 		    {% else %}
-	      		{% include 'nav_blocked.html' %}
+	      		{% include 'nav_blocked.twig' %}
 	   	 	{% endif %} 	
 	    {% else %}
-	      	{% include 'nav_index.html' %}
+	      	{% include 'nav_index.twig' %}
 	    {% endif %}
 	{% endblock %}
 	{% block content %} {% endblock%}
