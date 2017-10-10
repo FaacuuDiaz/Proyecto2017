@@ -6,8 +6,12 @@
 	require_once("check_session.php");
 	require_once("validate_data.php");
 	require_once("../model/Repository_User.php");
+	require_once("..model/Repository_Permission.php");
 
-	if($_SESSION['rol']=='admin'){
+	$user_update=Repository_Permission::get_id_permission("user_update");
+	$ok=Repository_User::can_user($_SESSION['rol_id'],$user_update);
+
+	if($ok){ //si el usuario tiene permiso de acceder a esa pagina
 		$id= validate_data($_GET['usr']);
 		$value= validate_data($_GET['state']);
 		if( $value == 1 ) {

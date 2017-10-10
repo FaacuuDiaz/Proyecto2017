@@ -67,7 +67,7 @@ class Repository_DatosDem
         return $result;
     }
 
-    public static function get_AllDatosDem($)
+    public static function get_AllDatosDem()
     {
         $con     = Connection::open_connection();
         $consult = "SELECT * FROM datos_demograficos";

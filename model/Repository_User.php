@@ -63,6 +63,17 @@
         return $result[0][0];
     }
 
+    public static function get_id_role($id){
+        $con=Connection::open_connection();
+        $consult="SELECT rol.id FROM usuario as u INNER JOIN usuario_tiene_rol as urol ON(u.id=urol.usuario_id) INNER JOIN rol ON(urol.rol_id=rol.id) WHERE u.id=:id";
+        $sen= $con->prepare($consult);
+        $sen->bindParam(':id',$id);
+        $sen->execute();
+        $result=$sen->fetchAll();
+        Connection::close_connection();
+        return $result[0][0];
+    }
+
     public static function insert_role($id_role,$id_user){
         $con=Connection::open_connection();
         $consult="INSERT INTO usuario_tiene_rol (usuario_id,rol_id) VALUES (:user,:role)";
@@ -146,6 +157,19 @@
         $result=$sen->fetchAll();
         Connection::close_connection();
         return $result;
+    }
+
+
+    public static function can_user($rol_id, $permiso_id){
+        $con=Connection::open_connection();
+        $consult="SELECT rol_id FROM rol_tiene_permiso rper WHERE rol_id=:rol_id and permiso_id=:permiso_id";
+        $sen= $con->prepare($consult);
+        $sen->bindParam(':rol_id',$rol_id);
+        $sen->bindParam(':permiso_id',$permiso_id);
+        $sen->execute();
+        $result=$sen->fetchAll();
+        Connection::close_connection();
+        return sizeof($result)>0;
     }
 
   }
