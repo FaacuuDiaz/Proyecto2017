@@ -11,7 +11,7 @@
 	        $sen->execute();
 	        $result=$sen->fetchAll();
 	        Connection::close_connection();
-	        return $result>0;   
+	        return $result[0][0];   
 		}
 
 
