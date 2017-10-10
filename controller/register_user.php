@@ -5,6 +5,8 @@
 	require_once("incluir_twig.php");
 	require_once("validate_data.php");
 	require_once("../model/Repository_User.php");
+	require_once "../model/Repository_Permission.php";
+
 
 	$name=validate_data($_POST['name']);
 	$lastname=validate_data($_POST['lastname']);
@@ -12,8 +14,13 @@
 	$pass=validate_data($_POST['pass']);
 	$email=validate_data($_POST['email']); //sanitizo los datos para evitar injecciones de algun tipo
 	$update=validate_data($_POST['update']);
+
 	if(isset($_SESSION['rol'])){
-		if($update = 1) {
+
+	$user_update=Repository_Permission::get_id_permission('user_update');//obtengo en id del permiso para actualizar
+	$ok = Repository_User::can_user($_SESSION['rol'],$user_update);//verifico si el rol puede actualizar un usuario
+		
+		if($update == 1 && $ok ) {
 			$id=$_SESSION['id'];
 			Repository_User::update_user($id,$name,$lastname,$user,$pass,$email);
 			$template=$twig->loadTemplate('inicio.twig');

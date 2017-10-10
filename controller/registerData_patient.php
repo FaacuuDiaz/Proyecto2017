@@ -6,8 +6,13 @@ require_once "incluir_twig.php";
 require_once "check_session.php";
 require_once "validate_data.php";
 require_once "../model/Repository_Patient.php";
+require_once("..model/Repository_Permission.php");
+$patient_new=Repository_Permission::get_id_permission("patient_new");
+$ok=Repository_User::can_user($_SESSION['rol_id'],$patient_new);
 
-if (isset($_SESSION['rol'])) {
+if($ok){//tiene el permiso necesario para ver cargar al paciente
+
+//if (isset($_SESSION['rol'])) {
     $name       = validate_data($_POST['name']);
     $lastname   = validate_data($_POST['lastname']);
     $address    = validate_data($_POST['address']);
@@ -20,7 +25,11 @@ if (isset($_SESSION['rol'])) {
 
     $update = validate_data($_POST['updt']);
 
-    if ($update == 1) {
+    $patient_update=Repository_Permission::get_id_permission("patient_update");
+    $updatePatient=Repository_User::can_user($_SESSION['rol_id'],$patient_update);
+
+
+    if ($update == 1 && $updatePatient) {        
         $id = validate_data($_POST['ptn']);
         Repository_Patient::update_patient($id, $name, $lastname, $address, $date, $gender, $typeDoc, $dni, $phone, $socialWork);
     } else {

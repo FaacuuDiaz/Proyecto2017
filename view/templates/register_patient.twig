@@ -28,38 +28,40 @@
 							{%endfor%}	
 						</select>
 			  		<div>
-  		<label class="radio-inline">Heladera: 	</label>
-  		<label class="radio-inline"><input type="radio" name="Heladera" required>Si</label>
-		<label class="radio-inline"><input type="radio" name="Heladera">No</label>
-		</div>
-		<div>
-  		<label class="radio-inline">Electricidad: 	</label>
-  		<label class="radio-inline"><input type="radio" name="Electricidad" required>Si</label>
-		<label class="radio-inline"><input type="radio" name="Electricidad">No</label>
-		</div>
-		<div>
-  		<label class="radio-inline">Mascota(s): 	</label>
-  		<label class="radio-inline"><input type="radio" name="Mascota" required>Si</label>
-		<label class="radio-inline"><input type="radio" name="Mascota">No</label>
-		</div>
-  		<label for="sel1">Tipo de Vivienda:</label>
-  		<select class="form-control" id="sel1" required>
-    		<option>1</option>
-    		<option>2</option>
-  		</select>
-  		<label for="sel2">Tipo de Calefacción:</label>
-  		<select class="form-control" id="sel2" required>
-    		<option>1</option>
-    		<option>2</option>
-  		</select>
-  		<label for="sel3">Tipo de Agua:</label>
-  		<select class="form-control" id="sel3" required>
-    		<option>1</option>
-    		<option>2</option>
-  		</select>
+		{%if demografico is defined and demografico%}	  			
+	  		<label class="radio-inline">Heladera: 	</label>
+	  		<label class="radio-inline"><input type="radio" name="Heladera" required>Si</label>
+			<label class="radio-inline"><input type="radio" name="Heladera">No</label>
+			</div>
+			<div>
+	  		<label class="radio-inline">Electricidad: 	</label>
+	  		<label class="radio-inline"><input type="radio" name="Electricidad" required>Si</label>
+			<label class="radio-inline"><input type="radio" name="Electricidad">No</label>
+			</div>
+			<div>
+	  		<label class="radio-inline">Mascota(s): 	</label>
+	  		<label class="radio-inline"><input type="radio" name="Mascota" required>Si</label>
+			<label class="radio-inline"><input type="radio" name="Mascota">No</label>
+			</div>
+	  		<label for="sel1">Tipo de Vivienda:</label>
+	  		<select class="form-control" id="sel1" required>
+	    		<option>1</option>
+	    		<option>2</option>
+	  		</select>
+	  		<label for="sel2">Tipo de Calefacción:</label>
+	  		<select class="form-control" id="sel2" required>
+	    		<option>1</option>
+	    		<option>2</option>
+	  		</select>
+	  		<label for="sel3">Tipo de Agua:</label>
+	  		<select class="form-control" id="sel3" required>
+	    		<option>1</option>
+	    		<option>2</option>
+	  		</select>
 
-			<input type="submit" name="Aceptar" value="Aceptar"><br>			 
-		</form>
+				<input type="submit" name="Aceptar" value="Aceptar"><br>			 
+			</form>
+		{%endif%}		
 
 	{%else%}
 

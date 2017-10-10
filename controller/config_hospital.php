@@ -6,8 +6,15 @@
 	require_once("check_session.php");
 	require_once("../model/Repository_Hospital.php");
 	require_once("validate_data.php");
+	require_once("..model/Repository_Permission.php");
+
+	$user_update=Repository_Permission::get_id_permission("config");
+	$ok=Repository_User::can_user($_SESSION['rol_id'],$user_update);
+
+	if($ok){
+
 	//echo "entro";
-	if($_SESSION['rol']=='admin'){
+	//if($_SESSION['rol']=='admin'){
 		echo isset($_POST['update']);
 		//$update=validate_data($_POST['update']);
 		if(!isset($_POST['update'])){
