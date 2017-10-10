@@ -6,6 +6,7 @@ require_once "incluir_twig.php";
 require_once "check_session.php";
 require_once "validate_data.php";
 require_once "../model/Repository_Patient.php";
+require_once "../model/Repository_DatosDem.php";
 
 if (isset($_SESSION['rol'])) {
     $name       = validate_data($_POST['name']);
@@ -18,13 +19,22 @@ if (isset($_SESSION['rol'])) {
     $phone      = validate_data($_POST['phone']);
     $socialWork = validate_data($_POST['socialWork']);
 
+    $heladera     = validate_data($_POST['Heladera']);
+    $electricidad = validate_data($_POST['Electricidad']);
+    $mascota      = validate_data($_POST['Mascota']);
+    $vivienda     = validate_data($_POST['vivien']);
+    $calefaccion  = validate_data($_POST['calef']);
+    $agua         = validate_data($_POST['water']);
+
     $update = validate_data($_POST['updt']);
 
     if ($update == 1) {
-        $id = validate_data($_POST['ptn']);
+        $id         = validate_data($_POST['ptn']);
+        $idDatosDem = validate_data($_POST['dd']);
         Repository_Patient::update_patient($id, $name, $lastname, $address, $date, $gender, $typeDoc, $dni, $phone, $socialWork);
     } else {
         Repository_Patient::insert_patient($name, $lastname, $address, $date, $gender, $typeDoc, $dni, $phone, $socialWork);
+        Repository_DatosDem::insert_datosDem($heladera, $electricidad, $mascota, $vivienda, $calefaccion, $agua);
     }
     header('Location:list_patient.php');
 } else {
