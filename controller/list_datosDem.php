@@ -8,7 +8,7 @@ require_once "check_session.php";
 require_once "../model/Repository_DatosDem.php";
 
 if (isset($_SESSION['rol'])) {
-    $datosDem = Repository_Patient::get_AllDatosDem();
+    $datosDem = Repository_Patient::get_allDatosDem();
 
     $template = $twig->loadTemplate('showDatosDem.twig');
     $template->display(array("rol_user" => $_SESSION['rol'], "datosDem" => $datosDem));

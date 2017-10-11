@@ -19,3 +19,4 @@ if ($destroy_patient) {
 } else {
     header('Location:index.php');
 }
+//habria que fijarse de si tiene dd asociados y si se deberian eliminar tmb

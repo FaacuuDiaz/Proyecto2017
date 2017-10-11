@@ -27,6 +27,8 @@ if ($ok) {
     $phone      = validate_data($_POST['phone']);
     $socialWork = validate_data($_POST['socialWork']);
 
+    //podriamos ver de poner esto en el else, onda que solo los recupere cuando te llegan
+    //lo cambio ma;ana porque lo quiero probar
     $heladera     = validate_data($_POST['Heladera']);
     $electricidad = validate_data($_POST['Electricidad']);
     $mascota      = validate_data($_POST['Mascota']);
@@ -41,6 +43,9 @@ if ($ok) {
 
     if ($update == 1 && $updatePatient) {
         $id = validate_data($_POST['ptn']);
+        //$dd = 0;
+        //onda que quede registrado que no se cargo,no se que valor pone automaticamente cuando se guarda
+
         Repository_Patient::update_patient($id, $name, $lastname, $address, $date, $gender, $typeDoc, $dni, $phone, $socialWork);
     } else {
         Repository_Patient::insert_patient($name, $lastname, $address, $date, $gender, $typeDoc, $dni, $phone, $socialWork);

@@ -1,53 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  	<link rel="stylesheet" type="text/css" href="../css/menu.css">
-	<link rel="stylesheet" type="text/css" href="../css/header.css">
-	<link rel="stylesheet" type="text/css" href="../css/footer.css">
-</head>
-<title>
-           Mostrar Datos Demograficos
-        </title>
-<body>
-<header><h1>Hospital DR. Ricardo Gutierrez</h1></header>
-<nav class="menu">
-    <ul>
-      <li><a href="../index.php">Cerrar Sesion</a></li>
-      <li class="submenu"><a>Pacientes</a>
-        <ul>
-          <li><a href="./pacienteRegistrar.php">Alta Paciente</a></li>
-          <li><a href="./pacienteListar.php">Listar Paciente</a></li>
-        </ul>
-      </li>
-      <li class="submenu"><a>Usuarios</a>
-        <ul>
-          <li><a href="./registrarse.php">Registrar</a></li>
-          <li><a href="#">Roles</a></li>
-          <li><a href="#">Permisos</a></li>
-          <li><a href="./usuarioListar.php">Listar Usuarios</a></li>
-          <li><a href="#">Configuracion</a></li>
-
-        </ul>
-      </li>
-      <li>
-      <form id="searchform" action="primeraEntrega/busquedaPaciente.php">
-        <input type="text" placeholder="Buscar..."/>
-        <button>Ir</button>
-      </form>
-      </li>
-    </ul>
-  </nav>
+{% extends 'base.twig'%}
+{% block content %}
     <div class="row">
  <div class="col-sm-2"> </div>
  <div class="container">
 
     <p> Mostrar Datos Demograficos</p>
-      <table class="table table-hover">
+    <p>Podemos hacer que recupere el nombre del usuario y hacer que lo muestre aca</p>
+      <table class="table table-bordered">
     <thead>
       <tr>
         <!-- <th>Paciente</th> -->
@@ -60,18 +19,34 @@
       </tr>
     </thead>
     <tbody>
+
       {% for dd in datosDem %}
       <tr>
-        <td>{{dd['heladera']}}</td>
-        <td>{{dd['electricidad']}}</td>
-        <td>{{dd['mascota']}}</td>
+      {% if dd['heladera'] == "0" %}
+      <td>No</td>
+      {% else %}
+      <td>Si</td>
+      {% endif %}
+
+      {% if dd['electricidad'] == 0 %}
+      <td>No</td>
+      {% else %}
+      <td>Si</td>
+      {% endif %}
+
+      {% if dd['mascota'] == 0 %}
+      <td>No</td>
+      {% else %}
+      <td>Si</td>
+      {% endif %}
+
         <td>{{dd['tipo_vivienda_id']}}</td>
         <td>{{dd['tipo_calefaccion_id']}}</td>
         <td>{{dd['tipo_agua_id']}}</td>
-       
-     <td><a href="./updateDatosDem.twig"><img src="../img/mas.png" alt="Listar" height="40" width="40"></a></td>
-        <td><a href="#"><img src="../img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>
-         </tr>
+        
+
+       <td><a href="recoveryDatosDem.php?dd={{dd['id']}}"><img src="../view/img/mas.png" alt="Listar" height="40" width="40"></a></td>
+          <td><a href="remove_datosDem.php?dd={{dd['id']}}"><img src="../view/img/eliminar.png" alt="eliminar" height="40" width="40"></a></td> 
        {% endfor %}  
       <tr>
         
@@ -79,7 +54,6 @@
   </table>
 </div>
   	
-  	
-	<footer class="footer">Proyecto de Software 2017 - Hospital Dr. Ricardo Gutierrez</footer>
-	
-</body>
+
+
+{% endblock %}

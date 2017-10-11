@@ -32,7 +32,8 @@
     		<td>{{ptn['tipo_doc']}}</td>
     		<td>{{ptn['numero']}}</td>		
 	        <td><a href="update_patient.php?ptn={{ptn['id']}}&updt=1"><img src="../view/img/mas.png" alt="Listar" height="40" width="40"></a></td>
-	        <td><a href="remove_patient.php?ptn={{ptn['id']}}"><img src="../view/img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>    
+	        <td><a href="remove_patient.php?ptn={{ptn['id']}}"><img src="../view/img/eliminar.png" alt="eliminar" height="40" width="40"></a></td> 
+            <td><a href="show_datosDem.php?ptn={{ptn['datos_demograficos']}}">Datos Dem</a></td>   
         </tr>
         {% endfor %}
     </table>

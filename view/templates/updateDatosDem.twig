@@ -5,23 +5,42 @@
     <div class="row">
  <div class="col-sm-4"> </div>
   <div class="col-sm-4">
-  	<form class="form-group" action="../controller/update_datosDem.php">
+  	<form class="form-group" method="POST" action="../controller/update_datosDem.php">
+
+
+      <!-- arreglar lo de los radios porque no se estan guardando bien
+      y para que salgan checked aca -->
 
       <input type="hidden" name="dd" value="{{datosDem[0]['id']}}">
   		<div>
   		<label class="radio-inline">Heladera: 	</label>
-  		<label class="radio-inline"><input type="radio" name="Heladera" value ="0" required>Si</label>
+      {% if datosDem[0]['heladera'] == 0 %}
+  		<label class="radio-inline"><input type="radio" name="Heladera" value ="0" checked="checked" required>Si</label>
 		<label class="radio-inline"><input type="radio" name="Heladera" value ="1">No</label>
+    {% else %}
+    <label class="radio-inline"><input type="radio" name="Heladera" value ="0"required>Si</label>
+    <label class="radio-inline"><input type="radio" name="Heladera"  checked="checked" value ="1">No</label>
+    {% endif %}
 		</div>
 		<div>
   		<label class="radio-inline">Electricidad: 	</label>
-  		<label class="radio-inline"><input type="radio" name="Electricidad" value ="0" required>Si</label>
+      {% if datosDem[0]['electricidad'] == 0 %}
+  		<label class="radio-inline"><input type="radio" name="Electricidad" value ="0"  checked="checked" required>Si</label>
 		<label class="radio-inline"><input type="radio" name="Electricidad" value ="1">No</label>
-		</div>
+    {% else %}
+      <label class="radio-inline"><input type="radio" name="Electricidad" value ="0"  required>Si</label>
+    <label class="radio-inline"><input type="radio" name="Electricidad" value ="1"  checked="checked">No</label>
+		{% endif %}
+    </div>
 		<div>
   		<label class="radio-inline">Mascota(s): 	</label>
-  		<label class="radio-inline"><input type="radio" name="Mascota" value ="0" required>Si</label>
+      {% if datosDem[0]['mascota'] == 0 %}
+  		<label class="radio-inline"><input type="radio" name="Mascota" value ="0" checked="checked" required>Si</label>
 		<label class="radio-inline"><input type="radio" name="Mascota" value ="1">No</label>
+    {% else %}
+    <label class="radio-inline"><input type="radio" name="Mascota" value ="0" required>Si</label>
+    <label class="radio-inline"><input type="radio" name="Mascota" value ="1" checked="checked">No</label>
+    {% endif %}
 		</div>
       <label for="sel1">Tipo de Vivienda:</label>
       <select class="form-control" id="vivien" name="vivien" required>

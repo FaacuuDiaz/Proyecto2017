@@ -36,8 +36,6 @@ class Repository_DatosDem
         return $result;
     }
 
-//de aca para abajo tengo que arreglar
-
     public static function insert_datosDem($heladera, $electricidad, $mascota, $vivienda_id, $calefaccion_id, $agua_id)
     {
 
@@ -55,7 +53,19 @@ class Repository_DatosDem
         Connection::close_connection();
     }
 
-    public static function get_DatosDem($id)
+    public static function get_datosDem($id)
+    {
+        $con     = Connection::open_connection();
+        $consult = "SELECT ta.nombre AS tipo_agua_id, tc.nombre AS tipo_calefaccion_id, tv.nombre AS tipo_vivienda_id, dd.heladera, dd.electricidad, dd.mascota, dd.id FROM datos_demograficos dd INNER JOIN tipo_agua ta ON (dd.tipo_agua_id=ta.id) INNER JOIN tipo_calefaccion tc ON (dd.tipo_calefaccion_id=tc.id)  INNER JOIN tipo_vivienda tv ON (dd.tipo_vivienda_id=tv.id) WHERE dd.id=:id";
+        $sen     = $con->prepare($consult);
+        $sen->bindParam(':id', $id);
+        $sen->execute();
+        $result = $sen->fetchAll();
+        Connection::close_connection();
+        return $result;
+    }
+
+    public static function get_updateDatosDem($id)
     {
         $con     = Connection::open_connection();
         $consult = "SELECT * FROM datos_demograficos WHERE id=:id";
@@ -65,14 +75,14 @@ class Repository_DatosDem
         $result = $sen->fetchAll();
         Connection::close_connection();
         return $result;
+
     }
 
-    public static function get_AllDatosDem()
+    public static function get_allDatosDem()
     {
-        $con     = Connection::open_connection();
-        $consult = "SELECT * FROM datos_demograficos";
+        $con = Connection::open_connection();
 
-        $consult = "SELECT ta.nombre AS tipo_agua_id, tc.nombre AS tipo_calefaccion_id, tv.nombre AS tipo_vivienda_id, * FROM datos_demograficos dd INNER JOIN tipo_agua ta ON (dd.tipo_agua_id=ta.id) INNER JOIN tipo_calefaccion tc ON (dd.tipo_calefaccion_id=tc.id)  INNER JOIN tipo_vivienda tv ON (dd.tipo_vivienda_id=tv.id)";
+        $consult = "SELECT ta.nombre AS tipo_agua_id, tc.nombre AS tipo_calefaccion_id, tv.nombre AS tipo_vivienda_id, dd. * FROM datos_demograficos dd INNER JOIN tipo_agua ta ON (dd.tipo_agua_id=ta.id) INNER JOIN tipo_calefaccion tc ON (dd.tipo_calefaccion_id=tc.id)  INNER JOIN tipo_vivienda tv ON (dd.tipo_vivienda_id=tv.id)";
         $sen     = $con->prepare($consult);
         $sen->execute();
         $result = $sen->fetchAll();
@@ -93,7 +103,7 @@ class Repository_DatosDem
     public static function update_datosDem($heladera, $electricidad, $mascota, $vivienda_id, $calefaccion_id, $agua_id, $id)
     {
         $con     = Connection::open_connection();
-        $consult = "UPDATE datos_demograficos SET heladera=:heladera,electricidad=:electricidad,mascota=:mascota,tipo_vivienda_id=vivienda_id,tipo_calefaccion_id=:calefaccion_id,tipo_agua_id=:agua_id WHERE id=:id";
+        $consult = "UPDATE datos_demograficos SET heladera=:heladera,electricidad=:electricidad,mascota=:mascota,tipo_vivienda_id=:vivienda_id,tipo_calefaccion_id=:calefaccion_id,tipo_agua_id=:agua_id WHERE id=:id";
         $sen     = $con->prepare($consult);
         $sen->bindParam(':heladera', $heladera);
         $sen->bindParam(':electricidad', $electricidad);
