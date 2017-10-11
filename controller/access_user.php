@@ -11,7 +11,7 @@ ini_set('display_errors', '1');
 	$pass=validate_data($_POST['pass']);//sanitizacion de datos
 
 	$exist = Repository_User::check_user($user,$pass); //verifico si existe el usuario
-
+	var_dump($exist);
 	if($exist){
 		
 		$habilitado=Repository_Hospital::get_infoEnabled();//obtengo si la pagina no esta bloqueada

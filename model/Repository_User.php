@@ -172,6 +172,21 @@
         return sizeof($result)>0;
     }
 
+
+    public static function find_user($name){
+        $con=Connection::open_connection();
+        $consult="SELECT * FROM usuario WHERE nombre=:name";
+        $sen= $con->prepare($consult);
+        $sen->bindParam(':name',$name);
+        $sen->execute();
+        $result=$sen->fetchAll();
+        Connection::close_connection();
+        return sizeof($result)>0;
+    }
+
+
+
+
   }
 
 ?>
