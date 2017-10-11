@@ -10,8 +10,8 @@ require_once "../model/Repository_Patient.php";
 require_once "../model/Repository_User.php";
 require_once "../model/Repository_Permission.php";
 
-$update_patient = Repository_Permission::get_id_permission('update_patient'); //obtengo en id del permiso para actualizar
-$patient_update = Repository_User::can_user($_SESSION['rol'], $update_patient); //verifico si el rol puede actualizar un usuario
+$update_patient = Repository_Permission::get_id_permission('paciente_update'); //obtengo en id del permiso para actualizar
+$patient_update = Repository_User::can_user($_SESSION['rol_id'], $update_patient); //verifico si el rol puede actualizar un usuario
 
 if ($patient_update) {
     $id       = validate_data($_GET['ptn']);

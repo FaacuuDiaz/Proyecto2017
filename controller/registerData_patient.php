@@ -7,8 +7,10 @@ require_once "check_session.php";
 require_once "validate_data.php";
 require_once "../model/Repository_Patient.php";
 require_once "../model/Repository_DatosDem.php";
-require_once "..model/Repository_Permission.php";
-$patient_new = Repository_Permission::get_id_permission("patient_new");
+require_once "../model/Repository_Permission.php";
+require_once "../model/Repository_User.php";
+
+$patient_new = Repository_Permission::get_id_permission("paciente_new");
 $ok          = Repository_User::can_user($_SESSION['rol_id'], $patient_new);
 
 if ($ok) {
@@ -34,7 +36,7 @@ if ($ok) {
 
     $update = validate_data($_POST['updt']);
 
-    $patient_update = Repository_Permission::get_id_permission("patient_update");
+    $patient_update = Repository_Permission::get_id_permission("paciente_update");
     $updatePatient  = Repository_User::can_user($_SESSION['rol_id'], $patient_update);
 
     if ($update == 1 && $updatePatient) {
