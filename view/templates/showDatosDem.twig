@@ -50,7 +50,7 @@
       <table class="table table-hover">
     <thead>
       <tr>
-        <th>Paciente</th>
+        <!-- <th>Paciente</th> -->
         <th>Heladera</th>
         <th>Electricidad</th>
         <th>Mascota</th>
@@ -60,39 +60,21 @@
       </tr>
     </thead>
     <tbody>
+      {% for dd in datosDem %}
       <tr>
-        <td>John</td>
-        <td>Si</td>
-        <td>Si</td>
-        <td>Si</td>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
+        <td>{{dd['heladera']}}</td>
+        <td>{{dd['electricidad']}}</td>
+        <td>{{dd['mascota']}}</td>
+        <td>{{dd['tipo_vivienda_id']}}</td>
+        <td>{{dd['tipo_calefaccion_id']}}</td>
+        <td>{{dd['tipo_agua_id']}}</td>
+       
      <td><a href="./updateDatosDem.twig"><img src="../img/mas.png" alt="Listar" height="40" width="40"></a></td>
         <td><a href="#"><img src="../img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>
          </tr>
+       {% endfor %}  
       <tr>
-         <td>Juan</td>
-        <td>Si</td>
-        <td>Si</td>
-        <td>Si</td>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td><a href="./updateDatosDem.twig"><img src="../img/mas.png" alt="Listar" height="40" width="40"></a></td>
-        <td><a href="#"><img src="../img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>
-      </tr>
-      <tr>
-         <td>Juana</td>
-        <td>Si</td>
-        <td>Si</td>
-        <td>Si</td>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td><a href="./updateDatosDem.twig"><img src="../img/mas.png" alt="Listar" height="40" width="40"></a></td>
-        <td><a href="#"><img src="../img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>
-      </tr>
+        
     </tbody>
   </table>
 </div>

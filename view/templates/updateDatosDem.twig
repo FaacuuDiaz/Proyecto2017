@@ -5,39 +5,48 @@
     <div class="row">
  <div class="col-sm-4"> </div>
   <div class="col-sm-4">
-  	<form class="form-group" action="./inicio.html">
+  	<form class="form-group" action="../controller/update_datosDem.php">
 
+      <input type="hidden" name="dd" value="{{datosDem[0]['id']}}">
   		<div>
   		<label class="radio-inline">Heladera: 	</label>
-  		<label class="radio-inline"><input type="radio" name="Heladera" required>Si</label>
-		<label class="radio-inline"><input type="radio" name="Heladera">No</label>
+  		<label class="radio-inline"><input type="radio" name="Heladera" value ="0" required>Si</label>
+		<label class="radio-inline"><input type="radio" name="Heladera" value ="1">No</label>
 		</div>
 		<div>
   		<label class="radio-inline">Electricidad: 	</label>
-  		<label class="radio-inline"><input type="radio" name="Electricidad" required>Si</label>
-		<label class="radio-inline"><input type="radio" name="Electricidad">No</label>
+  		<label class="radio-inline"><input type="radio" name="Electricidad" value ="0" required>Si</label>
+		<label class="radio-inline"><input type="radio" name="Electricidad" value ="1">No</label>
 		</div>
 		<div>
   		<label class="radio-inline">Mascota(s): 	</label>
-  		<label class="radio-inline"><input type="radio" name="Mascota" required>Si</label>
-		<label class="radio-inline"><input type="radio" name="Mascota">No</label>
+  		<label class="radio-inline"><input type="radio" name="Mascota" value ="0" required>Si</label>
+		<label class="radio-inline"><input type="radio" name="Mascota" value ="1">No</label>
 		</div>
-  		<label for="sel1">Tipo de Vivienda:</label>
-  		<select class="form-control" id="sel1" required>
-    		<option>1</option>
-    		<option>2</option>
-   			<option>3</option>
-  		</select>
-  		<label for="sel2">Tipo de Calefacción:</label>
-  		<select class="form-control" id="sel2" required>
-    		<option>1</option>
-    		<option>2</option>
-  		</select>
-  		<label for="sel3">Tipo de Agua:</label>
-  		<select class="form-control" id="sel3" required>
-    		<option>1</option>
-    		<option>2</option>
-  		</select>
+      <label for="sel1">Tipo de Vivienda:</label>
+      <select class="form-control" id="vivien" name="vivien" required>
+        {%for viv in vivienda%}
+        {% if datosDem[0][tipo_vivienda_id] == viv['id'] %}
+      <option value="{{viv['id']}}" selected>{{viv['nombre']}}</option>        
+        {% else %}
+      <option value="{{viv['id']}}">{{viv['nombre']}}</option>
+      {% endif %}
+      {%endfor%}  
+      </select>
+      <br>
+      <label for="sel2">Tipo de Calefacción:</label>
+      <select class="form-control" id="calef" name="calef" required>
+        {%for cal in calefaccion%}
+      <option value="{{cal['id']}}">{{cal['nombre']}}</option>
+      {%endfor%}  
+      </select>
+      <br>
+      <label for="sel3">Tipo de Agua:</label>
+      <select class="form-control" id="water" name="water" required>
+        {%for ag in agua%}
+      <option value="{{ag['id']}}">{{ag['nombre']}}</option>
+      {%endfor%}  
+      </select>
   		<BR>
   		 <input name="submit" class="btn btn-success" type="submit" value="Aceptar">
   	</form>
