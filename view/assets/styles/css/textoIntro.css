@@ -1,3 +1,7 @@
+.non-relative{
+    position: none;
+}
+
 table th form div {
     text-align: center;
     padding-left: 20px;

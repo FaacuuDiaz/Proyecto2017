@@ -1,18 +1,22 @@
 {% extends 'base.twig' %}
 {% block content %}
-	{% if errorLogin %}
-		<script language="JavaScript" type="text/javascript">
-			alert("El usuario o la contraseña son incorrectos");
-		</script>
-	{%endif%}
+
+    <div class="col-sm-5"></div>
+    <div class="col-sm-4">
     <form action="../controller/access_user.php" method="POST" >
-        Usuario:
-        <input name="user" pattern="[a-zA-Z]{4,15}$" placeholder="Ingrese el usuario" data-error="Ingresar usuario valido."
-        type="text" required>
-        Contraseña:
-        <input name="pass" placeholder="Ingrese la contraseña" pattern="[a-z0-9A-Z]{6,12}$" data-error="Ingresar contraseña valida."
-        type="password" required>
-        <input name="submit" type="submit" value="Aceptar">
+
+        <label>Usuario:</label>
+        <div class="form-group">
+            <input name="user" pattern="[a-zA-Z]{4,15}$" placeholder="Ingrese el usuario" data-error="Ingresar usuario valido."
+        type="text" required> 
+        </div>
+        <label>Contraseña:</label>
+        <div class="form-group">
+            <input name="pass" placeholder="Ingrese la contraseña" pattern="[a-z0-9A-Z]{6,12}$" data-error="Ingresar contraseña valida." type="password" required>
+        </div>
+        <input name="submit" type="submit" value="Aceptar"><br>
+        Aun no te has registrado?<a href="../controller/register.php">registrate</a>
     </form>
+    </div>
 
 {%endblock%}

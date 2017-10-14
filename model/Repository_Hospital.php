@@ -49,6 +49,20 @@
 			Connection::close_connection();
 			return $result[0][0];
 		}
+
+
+		public static function get_HospitalTitle(){
+			$con=Connection::open_connection();
+			$consult="SELECT titulo FROM hospital";
+			$sen=$con->prepare($consult);
+			$sen -> execute();
+			$result=$sen->fetchAll();
+			Connection::close_connection();
+			return $result[0][0];
+		}
+
+
+
 	}
 
 ?>

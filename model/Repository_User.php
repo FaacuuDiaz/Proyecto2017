@@ -183,8 +183,7 @@
         Connection::close_connection();
         return sizeof($result)>0;
     }
-
-
+ 
 
 
   }

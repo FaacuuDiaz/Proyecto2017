@@ -6,10 +6,11 @@
 	require_once("check_session.php");
 	require_once("../model/Repository_Hospital.php");
 	require_once("validate_data.php");
-	require_once("..model/Repository_Permission.php");
+	require_once("../model/Repository_Permission.php");
+	require_once("../model/Repository_User.php");
 
-	$user_update=Repository_Permission::get_id_permission("config");
-	$ok=Repository_User::can_user($_SESSION['rol_id'],$user_update);
+	$config=Repository_Permission::get_id_permission("config");
+	$ok=Repository_User::can_user($_SESSION['rol_id'],$config);
 
 	if($ok){
 

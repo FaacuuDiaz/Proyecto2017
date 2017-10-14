@@ -5,7 +5,7 @@
 	require_once("incluir_twig.php");
 	require_once("check_session.php");
 	require_once("../model/Repository_User.php");
-	require_once("..model/Repository_Permission.php");
+	require_once("../model/Repository_Permission.php");
 
 	$roles=Repository_Permission::get_id_permission("roles");
 	$ok=Repository_User::can_user($_SESSION['rol_id'],$roles);

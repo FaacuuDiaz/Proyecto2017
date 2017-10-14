@@ -1,7 +1,8 @@
 {% extends 'base.twig' %}
 {% block content %}
 	<p>Listar Usuarios</p>
-    <table>
+    <div class="table-responsive">
+    <table class="table table-striped">
         <tr>
             <th>Nombre</th>
             <th>Apellido</th>
@@ -20,9 +21,11 @@
     			<td>{{'Bloqueado'}}</td>
     		{%endif%}		
 	        <td><a href="changeState_user.php?usr={{usr['id']}}&state={{usr['activo']}}"><img src="../view/img/mas.png" alt="Listar" height="40" width="40"></a></td>
-	        <td><a href="remove_user.php?usr={{usr['id']}}"><img src="../view/img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>    
+	        <td><a href="remove_user.php?usr={{usr['id']}}" onclick="if(!confirm('¿Desea eliminar el usuario?'))return false;"><img src="../view/img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>    
         </tr>
         {% endfor %}
     </table>
+
+</div>
 
 {% endblock%}

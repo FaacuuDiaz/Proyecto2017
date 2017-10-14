@@ -5,13 +5,13 @@
 	require_once("check_session.php");
 	require_once('incluir_twig.php');
 	require_once("../model/Repository_Hospital.php");
-	//print_r($_SESSION);
-	$habilitado=Repository_Hospital::get_infoEnabled();
-	$admin=isset($_SESSION['rol']);
-	$ok=false;
-	if($admin == 1){
-		$ok = $admin == 'admin';
-	}
+	require_once("../model/Repository_Permission.php");
+	require_once("../model/Repository_User.php");
+
+
+	$ok=check_permission("config"); //chequeo si el usuario tiene el permiso
+
+	$habilitado=Repository_Hospital::get_infoEnabled();//verifico si la pagina no esta blockeada
 	
 	if ($habilitado==1 || $ok ){
 		if(isset($_SESSION['rol'])){

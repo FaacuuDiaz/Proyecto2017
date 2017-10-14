@@ -4,12 +4,23 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no ,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	
+	
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 	<link rel="stylesheet" type="text/css" href="../view/css/menu.css">
 	<link rel="stylesheet" type="text/css" href="../view/css/header.css">
 	<link rel="stylesheet" type="text/css" href="../view/css/footer.css">
 	<link rel="stylesheet" type="text/css" href="../view/css/textoIntro.css">
-	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="../view/templates/js/jquery-novo.js" type="text/javascript" ></script>
+	<script src="../view/templates/js/habilitar.js" type="text/javascript" ></script>
+
+	<!--<script src="../view/templates/js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8" ></script>
+	<script src="../view/templates/js/jquery.js" type="text/javascript" charset="utf-8" ></script>
+	<script src="../view/templates/js/jquery.min.js" type="text/javascript" charset="utf-8" ></script>
+	<script src="../view/templates/js/jquery-ui.js" type="text/javascript" charset="utf-8" ></script>
+	<script src="../view/templates/js/jquery-ui.min.js" type="text/javascript" charset="utf-8" ></script>
+	<script src="../view/templates/js/jquery.canvasjs.min.js" type="text/javascript" charset="utf-8" ></script>-->
 
 	<title>Inicio</title>
 </head>
@@ -17,15 +28,7 @@
 	<header><h1>Hospital DR. Ricardo Gutierrez</h1></header>
 	{% block nav %}
 		{% if rol_user is defined %}
-			{% if rol_user != 'blocked' %}		
-		    	{% if rol_user == 'admin' %}
-		       		{% include 'nav_admin.twig' %}
-		      	{% else %}
-		        	{% include 'nav_common.twig' %}
-		      	{% endif%}
-		    {% else %}
-	      		{% include 'nav_blocked.twig' %}
-	   	 	{% endif %} 	
+			{% include 'nav_'~rol_user~'.twig' %}			
 	    {% else %}
 	      	{% include 'nav_index.twig' %}
 	    {% endif %}
@@ -33,7 +36,7 @@
 	{% block content %} {% endblock%}
 	{% block footer %}
        <footer>©Proyecto de Software 2017 -Grupo 30.
-          {{ now |date("d/m/Y") }} </footer>
+          {{ now |date("d/m/Y") }}~<a href="information_hospital.php">Informacion</a>~</footer>
     {% endblock %}
 </body>
 </html>

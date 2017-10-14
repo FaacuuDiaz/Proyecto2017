@@ -27,13 +27,6 @@ if ($ok) {
     $phone      = validate_data($_POST['phone']);
     $socialWork = validate_data($_POST['socialWork']);
 
-    $heladera     = validate_data($_POST['Heladera']);
-    $electricidad = validate_data($_POST['Electricidad']);
-    $mascota      = validate_data($_POST['Mascota']);
-    $vivienda     = validate_data($_POST['vivien']);
-    $calefaccion  = validate_data($_POST['calef']);
-    $agua         = validate_data($_POST['water']);
-
     $update = validate_data($_POST['updt']);
 
     $patient_update = Repository_Permission::get_id_permission("paciente_update");
@@ -41,10 +34,21 @@ if ($ok) {
 
     if ($update == 1 && $updatePatient) {
         $id = validate_data($_POST['ptn']);
-        Repository_Patient::update_patient($id, $name, $lastname, $address, $date, $gender, $typeDoc, $dni, $phone, $socialWork);
+        //dd es el id de datos demograficos asociado
+        $dd = validate_data($_POST['dd']);
+
+        Repository_Patient::update_patient($id, $name, $lastname, $address, $date, $gender, $typeDoc, $dni, $phone, $socialWork, $dd);
     } else {
-        Repository_Patient::insert_patient($name, $lastname, $address, $date, $gender, $typeDoc, $dni, $phone, $socialWork);
-        Repository_DatosDem::insert_datosDem($heladera, $electricidad, $mascota, $vivienda, $calefaccion, $agua);
+        $heladera     = validate_data($_POST['Heladera']);
+        $electricidad = validate_data($_POST['Electricidad']);
+        $mascota      = validate_data($_POST['Mascota']);
+        $vivienda     = validate_data($_POST['vivien']);
+        $calefaccion  = validate_data($_POST['calef']);
+        $agua         = validate_data($_POST['water']);
+        $dd           = Repository_DatosDem::insert_datosDem($heladera, $electricidad, $mascota, $vivienda, $calefaccion, $agua);
+
+        Repository_Patient::insert_patient($name, $lastname, $address, $date, $gender, $typeDoc, $dni, $phone, $socialWork, $dd);
+
     }
     header('Location:list_patient.php');
 } else {
