@@ -1,0 +1,46 @@
+{% extends 'base.twig' %}
+{% block content %}
+	<label>Fitro de Busqueda</label>
+	<form action="../controller/return_search_user.php" method="POST" name='search'>
+		Nombre:<input type="text" name="name" placeholder="Ingrese el nombre"><br>
+		Estado: <select name="estado"><br>
+							<option value="-1"> Seleccione un tipo</option>
+							<option value="1"> Activo</option>
+							<option value="0"> Bloqueado</option>
+						</select> <br>
+		<input type="submit" name="accept" value="Buscar">
+	</form>
+
+	{% if user_search is defined %}
+		<div class="table-responsive">
+    <table class="table table-striped">
+	        <tr>
+	            <th>Nombre</th>
+	            <th>Apellido</th>
+	            <th>Usuario</th>
+	            <th>Email</th>
+	            <th>Estado</th>
+
+	        </tr>
+	        {% for us in user_search%}
+	        <tr>
+	    		<td>{{us['nombre']}}</td>
+	    		<td>{{us['apellido']}}</td>
+	    		<td>{{us['username']}}</td>
+	    		<td>{{us['email']}}</td>
+	    		{%if us['activo'] == 1 %}
+    			<td>{{'Activo'}}</td>
+    			{%else%}
+    			<td>{{'Bloqueado'}}</td>
+    			{%endif%}
+    			<td><a href="changeState_user.php?usr={{us['id']}}&state={{us['activo']}}"><img src="../view/img/mas.png" alt="Listar" height="40" width="40"></a></td>
+	        <td><a href="remove_user.php?usr={{us['id']}}"><img src="../view/img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>
+		       
+	        </tr>
+	        {% endfor %}
+   		 </table>
+   		</div>
+
+	{% endif %}
+
+{% endblock %}	

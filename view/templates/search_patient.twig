@@ -1,0 +1,58 @@
+{% extends 'base.twig' %}
+{% block content %}
+	<label>Fitro de Busqueda</label>
+	<form action="../controller/return_search_patient.php" method="POST" name='search'>
+		Nombre:<input type="text" name="name" placeholder="Ingrese el nombre"><br>
+		Apellido:<input type="text" name="lastname" placeholder="Ingrese el Apellido"><br>
+		Tipo Documento: <select name="typeDoc" onchange="habilitarDni(this.value)"><br>
+							<option value="-1"> Seleccione un tipo</option>
+							{%for doc in docs%}
+								<option value="{{doc['id']}}">{{doc['nombre']}}</option>
+							{%endfor%}	
+						</select> 
+		Dni:<input type="text" name="dni" pattern="[0-9]{7-10}$" placeholder="Ingrese el documento" disabled><br>
+		<input type="submit" name="accept" value="Buscar">
+	</form>
+
+	{% if patients_search is defined %}
+		<div class="table-responsive">
+    <table class="table table-striped">
+	        <tr>
+	            <th>Nombre</th>
+	            <th>Apellido</th>
+	            <th>Domicilio</th>
+	            <th>Telefono</th>
+	            <th>Fecha Nacimiento</th>
+	            <th>Genero</th>
+	            <th>Obra Social</th>
+	            <th>Tipo Documento</th>
+	            <th>Numero</th>
+
+	        </tr>
+	        {% for ptn in patients_search%}
+	        <tr>
+	    		<td>{{ptn['nombre']}}</td>
+	    		<td>{{ptn['apellido']}}</td>
+	    		<td>{{ptn['domicilio']}}</td>
+	    		<td>{{ptn['tel']}}</td>
+	    		<td>{{ptn['fecha_nac']}}</td>
+	    		{%if ptn['genero'] == 'M' %}
+	    			<td>{{'Masculino'}}</td>
+	    		{%else%}
+	    			<td>{{'Femenino'}}</td>
+	    		{%endif%}
+	    		<td>{{ptn['obra_social']}}</td>
+	    		<td>{{ptn['tipo_doc']}}</td>
+	    		<td>{{ptn['numero']}}</td>		
+		        <td><a href="update_patient.php?ptn={{ptn['id']}}&updt=1"><img src="../view/img/mas.png" alt="Listar" height="40" width="40"></a></td>
+		        <td><a href="remove_patient.php?ptn={{ptn['id']}}"><img src="../view/img/eliminar.png" alt="eliminar" height="40" width="40"></a></td> 
+	           
+            <td><button onclick="location.href='show_datosDem.php?ptn={{ptn['datos_demograficos']}}'">Datos Dem</button></td>
+	        </tr>
+	        {% endfor %}
+   		 </table>
+   		</div>
+
+	{% endif %}
+
+{% endblock %}	

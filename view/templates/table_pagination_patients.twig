@@ -1,0 +1,39 @@
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Domicilio</th>
+            <th>Telefono</th>
+            <th>Fecha Nacimiento</th>
+            <th>Genero</th>
+            <th>Obra Social</th>
+            <th>Tipo Documento</th>
+            <th>Numero</th>
+
+        </tr>
+        {% for ptn in patients%}
+        <tr>
+    		<td>{{ptn['nombre']}}</td>
+    		<td>{{ptn['apellido']}}</td>
+    		<td>{{ptn['domicilio']}}</td>
+    		<td>{{ptn['tel']}}</td>
+    		<td>{{ptn['fecha_nac']}}</td>
+    		{%if ptn['genero'] == 'M' %}
+    			<td>{{'Masculino'}}</td>
+    		{%else%}
+    			<td>{{'Femenino'}}</td>
+    		{%endif%}
+    		<td>{{ptn['obra_social']}}</td>
+    		<td>{{ptn['tipo_doc']}}</td>
+    		<td>{{ptn['numero']}}</td>		
+	        <td><a href="update_patient.php?ptn={{ptn['id']}}&updt=1"><img src="../view/img/mas.png" alt="Listar" height="40" width="40"></a></td>
+            {% if delete %}
+	           <td><a href="remove_patient.php?ptn={{ptn['id']}}" onclick="if(!confirm('¿Desea eliminar el usuario?'))return false;"><img src="../view/img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>
+            {% endif %}    
+            <td><button onclick="location.href='show_datosDem.php?ptn={{ptn['datos_demograficos']}}'">Datos Dem</button></td>
+  
+        </tr>
+        {% endfor %}
+    </table>
+</div>
