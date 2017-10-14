@@ -34,10 +34,12 @@ if ($ok) {
 
     if ($update == 1 && $updatePatient) {
         $id = validate_data($_POST['ptn']);
+
         //dd es el id de datos demograficos asociado
         $dd = validate_data($_POST['dd']);
 
         Repository_Patient::update_patient($id, $name, $lastname, $address, $date, $gender, $typeDoc, $dni, $phone, $socialWork, $dd);
+
     } else {
         $heladera     = validate_data($_POST['Heladera']);
         $electricidad = validate_data($_POST['Electricidad']);

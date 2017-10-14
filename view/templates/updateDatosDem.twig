@@ -5,6 +5,7 @@
     <div class="row">
  <div class="col-sm-4"> </div>
   <div class="col-sm-4">
+<<<<<<< HEAD
     <form class="form-group" method="POST" action="../controller/update_datosDem.php">
 
 
@@ -14,6 +15,7 @@
       {% if datosDem[0]['heladera'] == 0 %}
       <label class="radio-inline"><input type="radio" name="Heladera" value ="0" checked="checked" required>Si</label>
     <label class="radio-inline"><input type="radio" name="Heladera" value ="1">No</label>
+
     {% else %}
     <label class="radio-inline"><input type="radio" name="Heladera" value ="0"required>Si</label>
     <label class="radio-inline"><input type="radio" name="Heladera"  checked="checked" value ="1">No</label>
@@ -34,11 +36,12 @@
       {% if datosDem[0]['mascota'] == 0 %}
       <label class="radio-inline"><input type="radio" name="Mascota" value ="0" checked="checked" required>Si</label>
     <label class="radio-inline"><input type="radio" name="Mascota" value ="1">No</label>
-    {% else %}
     <label class="radio-inline"><input type="radio" name="Mascota" value ="0" required>Si</label>
     <label class="radio-inline"><input type="radio" name="Mascota" value ="1" checked="checked">No</label>
     {% endif %}
+
     </div>
+
       <label for="sel1">Tipo de Vivienda:</label>
       <select class="form-control" id="vivien" name="vivien" required>
         {%for viv in vivienda%}
