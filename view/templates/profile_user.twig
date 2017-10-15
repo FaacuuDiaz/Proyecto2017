@@ -2,15 +2,26 @@
 {% block content %}
 
 	<p>Perfil</p>
-
+    <div class="col-sm-5"></div>
+    <div class="col-sm-4">
 	<form action="../controller/register_user.php" method="POST">
-		Nombre: <input type="text" name="name" placeholder="Ingrese el Nombre" value="{{info[0]['nombre']}}"><br>
-		Apellido: <input type="text" name="lastname" placeholder="Ingrese el Apellido" value="{{info[0]['apellido']}}"><br>
-		Usuario: <input type="text" name="user" pattern="[a-zA-Z]{4,15}$" value="{{info[0]['username']}}" placeholder="Ingrese el usuario"><br>
-		Contraseña: <input type="password" pattern="[a-z0-9A-Z]{6,12}$" name="pass" value="{{info[0]['password']}}" placeholder="Ingrese la contraseña"> <br>
-		Email: <input type="email" name="email" placeholder="ejemplo@gmail.com" value="{{info[0]['email']}}"><br>
+		<div class="form-group">
+		<label>Nombre:</label><input type="text" name="name" placeholder="Ingrese el Nombre" value="{{info[0]['nombre']}}">
+		</div>
+		<div class="form-group">
+		<label>Apellido:</label><input type="text" name="lastname" placeholder="Ingrese el Apellido" value="{{info[0]['apellido']}}"><br>
+		</div>
+		<div class="form-group">
+		<label>Usuario:</label><input type="text" name="user" pattern="[a-zA-Z]{4,15}$" value="{{info[0]['username']}}" placeholder="Ingrese el usuario">
+		</div>
+		<div class="form-group">
+		<label>Contraseña:</label><input type="password" pattern="[a-z0-9A-Z]{6,12}$" name="pass" value="{{info[0]['password']}}" placeholder="Ingrese la contraseña"> 
+		</div>
+		<div class="form-group">
+		<label>Email:</label><input type="email" name="email" placeholder="ejemplo@gmail.com" value="{{info[0]['email']}}">
+		</div>
 		<input type="submit" name="submit" value="Aceptar">
 		<input type="hidden" name="update" value="1">
 	</form>
-
+</div>
 {% endblock %}

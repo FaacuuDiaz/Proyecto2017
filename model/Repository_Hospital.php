@@ -61,7 +61,15 @@
 			return $result[0][0];
 		}
 
-
+		public static function get_Pagination_Number(){
+			$con=Connection::open_connection();
+			$consult="SELECT paginacion FROM hospital";
+			$sen=$con->prepare($consult);
+			$sen -> execute();
+			$result=$sen->fetchAll();
+			Connection::close_connection();
+			return $result[0][0];
+		}
 
 	}
 
