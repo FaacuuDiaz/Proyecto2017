@@ -2,15 +2,23 @@
 {% block content %}
 	<label>Fitro de Busqueda</label>
 	<form action="../controller/return_search_patient.php" method="POST" name='search'>
-		Nombre:<input type="text" name="name" placeholder="Ingrese el nombre"><br>
-		Apellido:<input type="text" name="lastname" placeholder="Ingrese el Apellido"><br>
-		Tipo Documento: <select name="typeDoc" onchange="habilitarDni(this.value)"><br>
+		<div class="form-group">
+		<label>Nombre:</label><input type="text" name="name" placeholder="Ingrese el nombre">
+		</div>
+		<div class="form-group">
+		<label>Apellido:</label><input type="text" name="lastname" placeholder="Ingrese el Apellido">
+		</div>
+		<div class="form-group">
+		<label>Tipo Documento:</label> <select name="typeDoc" onchange="habilitarDni(this.value)">
 							<option value="-1"> Seleccione un tipo</option>
 							{%for doc in docs%}
 								<option value="{{doc['id']}}">{{doc['nombre']}}</option>
 							{%endfor%}	
 						</select> 
-		Dni:<input type="text" name="dni" pattern="[0-9]{7-10}$" placeholder="Ingrese el documento" disabled><br>
+		</div>
+		<div class="form-group">
+		<label>Dni:</label><input type="text" name="dni" pattern="[0-9]{7-10}$" placeholder="Ingrese el documento" disabled>
+		</div>
 		<input type="submit" name="accept" value="Buscar">
 	</form>
 

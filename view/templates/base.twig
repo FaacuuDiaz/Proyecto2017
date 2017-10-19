@@ -12,13 +12,17 @@
 	<link rel="stylesheet" type="text/css" href="../view/css/header.css">
 	 <link rel="stylesheet" type="text/css" href="../view/css/novo-footer.css"> 
 	<link rel="stylesheet" type="text/css" href="../view/css/textoIntro.css">
+	<script src="../view/templates/js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8" ></script>
 	<script src="../view/templates/js/habilitar.js" type="text/javascript" charset="utf-8" ></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="../view/templates/js/main.js" type="text/javascript" charset="utf-8" ></script>
 
 	<title>Inicio</title>
 </head>
 <body>
-	<header><h1>Hospital DR. Ricardo Gutierrez</h1></header>
+	<div class="menu_bar">
+		<a href="#" class="bt-menu"><img src="../view/img/icon-list.png" alt="menu" height="30" width="30"> Menú</a>
+	</div>	
+	<header><div class="titulo">Hospital DR. Ricardo Gutierrez</div>
 	{% block nav %}
 		{% if rol_user is defined %}
 			{% include 'nav_'~rol_user~'.twig' %}			
@@ -26,12 +30,17 @@
 	      	{% include 'nav_index.twig' %}
 	    {% endif %}
 	{% endblock %}
-
+	</header>
+	<div class="content">
 	{% block content %} {% endblock%}
-	<div class="clearfix"></div>
+	</div>	
 	{% block footer %}
-       <footer>©Proyecto de Software 2017 -Grupo 30.
-          {{ now |date("d/m/Y") }}~<a href="information_hospital.php">Informacion</a>~</footer>
+	<footer>
+
+           ©Proyecto de Software 2017 -Grupo 30.
+          {{ now |date("d/m/Y") }}~<a href="information_hospital.php">Informacion</a>~
+        
+    </footer>
     {% endblock %}
 	
 </body>

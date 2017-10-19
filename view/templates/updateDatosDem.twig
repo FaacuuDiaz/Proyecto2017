@@ -9,13 +9,13 @@
 
 
       <input type="hidden" name="dd" value="{{datosDem[0]['id']}}">
-      <div>
+      <div class="form-group">
       <label class="radio-inline">Heladera:   </label>
       {% if datosDem[0]['heladera'] == 0 %}
       <label class="radio-inline"><input type="radio" name="Heladera" value ="0" checked="checked" required>Si</label>
     <label class="radio-inline"><input type="radio" name="Heladera" value ="1">No</label>
     {% else %}
-    <label class="radio-inline"><input type="radio" name="Heladera" value ="0"required>Si</label>
+    <label class="radio-inline"><input type="radio" name="Heladera" value ="0" required>Si</label>
     <label class="radio-inline"><input type="radio" name="Heladera"  checked="checked" value ="1">No</label>
     {% endif %}
     </div>
@@ -39,8 +39,9 @@
     <label class="radio-inline"><input type="radio" name="Mascota" value ="1" checked="checked">No</label>
     {% endif %}
     </div>
-      <label for="sel1">Tipo de Vivienda:</label>
+      <label>Tipo de Vivienda:</label>
       <select class="form-control" id="vivien" name="vivien" required>
+        <option value="" disabled selected>Seleccione un tipo</option>
         {%for viv in vivienda%}
         {% if datosDem[0]['tipo_vivienda_id'] == viv['id'] %}
       <option value="{{viv['id']}}" selected>{{viv['nombre']}}</option>        
@@ -50,8 +51,9 @@
       {% endfor %}  
       </select>
       <br>
-      <label for="sel2">Tipo de Calefacción:</label>
+      <label>Tipo de Calefacción:</label>
       <select class="form-control" id="calef" name="calef" required>
+        <option value="" disabled selected>Seleccione un tipo</option>
         {%for cal in calefaccion%}
         {% if datosDem[0]['tipo_calefaccion_id'] == cal['id'] %}
          <option value="{{cal['id']}}" selected>{{cal['nombre']}}</option>
@@ -61,8 +63,9 @@
       {% endfor %}  
       </select>
       <br>
-      <label for="sel3">Tipo de Agua:</label>
+      <label>Tipo de Agua:</label>
       <select class="form-control" id="water" name="water" required>
+        <option value="" disabled selected>Seleccione un tipo</option>
         {%for ag in agua%}
          {% if datosDem[0]['tipo_agua_id'] == ag['id'] %}
       <option value="{{ag['id']}}" selected>{{ag['nombre']}}</option>

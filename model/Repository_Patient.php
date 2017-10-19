@@ -109,5 +109,40 @@ class Repository_Patient
         $sen->execute();
         Connection::close_connection();
     }
+    public static function check_existe($typeDoc, $dni)
+    {
+        $con     = Connection::open_connection();
+        $consult = "SELECT * FROM paciente WHERE tipo_doc_id=:typeDoc and numero=:dni";
+        $sen     = $con->prepare($consult);
+        $sen->bindParam(':typeDoc', $typeDoc);
+        $sen->bindParam(':dni', $dni);
+        $sen->execute();
+        $result = $sen->fetchAll();
+        Connection::close_connection();
+        if (sizeof($result) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+    public static function check_update($typeDoc, $dni, $id)
+    {
+        $con     = Connection::open_connection();
+        $consult = "SELECT * FROM paciente WHERE tipo_doc_id=:typeDoc and numero=:dni and id!=:id";
+        $sen     = $con->prepare($consult);
+        $sen->bindParam(':typeDoc', $typeDoc);
+        $sen->bindParam(':dni', $dni);
+        $sen->bindParam(':id', $id);
+        $sen->execute();
+        $result = $sen->fetchAll();
+        Connection::close_connection();
+        if (sizeof($result) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 
 }

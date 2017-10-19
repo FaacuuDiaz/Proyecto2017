@@ -26,6 +26,6 @@
 	}	
 	else{
 		$template= $twig->loadTemplate('blocked.twig');
-		$template->display(array('rol_user'=>'blocked'));
+		$template->display(array());
 	}	
 ?>

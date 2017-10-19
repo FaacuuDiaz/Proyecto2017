@@ -36,6 +36,10 @@ if ($exist) {
             $_SESSION['rol_id'] = $user_rol;
             $user_rol           = Repository_User::get_role($_SESSION['id']); //obtengo el nombre del rol
 
+            if ($user_rol != 'admin') {
+                $user_rol='common';
+            }
+
             $_SESSION['rol'] = $user_rol; //$mi_rol;
 
             header("Location:index.php");

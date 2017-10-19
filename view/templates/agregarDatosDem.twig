@@ -1,92 +1,108 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  	<link rel="stylesheet" type="text/css" href="../css/menu.css">
-	<link rel="stylesheet" type="text/css" href="../css/header.css">
-	  <link rel="stylesheet" type="text/css" href="../css/footer.css">
-    <link rel="stylesheet" type="text/css" href="../css/textIntro.css">
-</head>
-<title>
-           Agregar Datos Demograficos
-        </title>
-<body>
-<header><h1>Hospital DR. Ricardo Gutierrez</h1></header>
-    <nav class="menu">
-    <ul>
-      <li><a href="../index.php">Cerrar Sesion</a></li>
-      <li class="submenu"><a>Pacientes</a>
-        <ul>
-          <li><a href="./pacienteRegistrar.php">Alta Paciente</a></li>
-          <li><a href="./pacienteListar.php">Listar Paciente</a></li>
-        </ul>
-      </li>
-      <li class="submenu"><a>Usuarios</a>
-        <ul>
-          <li><a href="./registrarse.php">Registrar</a></li>
-          <li><a href="#">Roles</a></li>
-          <li><a href="#">Permisos</a></li>
-          <li><a href="./usuarioListar.php">Listar Usuarios</a></li>
-          <li><a href="#">Configuracion</a></li>
+<html lang="es">
 
-        </ul>
-      </li>
-      <li>
-      <form id="searchform" action="primeraEntrega/busquedaPaciente.php">
-        <input type="text" placeholder="Buscar..."/>
-        <button>Ir</button>
-      </form>
-      </li>
-    </ul>
-  </nav>
-    <p>Agregar Datos Demograficos</p>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no ,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <link rel="stylesheet" type="text/css" href="../view/css/menu.css">
+  <link rel="stylesheet" type="text/css" href="../view/css/header.css">
+   <link rel="stylesheet" type="text/css" href="../view/css/novo-footer.css"> 
+  <link rel="stylesheet" type="text/css" href="../view/css/textoIntro.css">
+  <script src="../view/templates/js/habilitar.js" type="text/javascript" charset="utf-8" ></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+  <title>Inicio</title>
+</head>
+<body>
+  <header><h1>Hospital DR. Ricardo Gutierrez</h1></header>
+{% extends 'base.twig' %}
+{% block content %}
+
+    <p> Modificar Datos Demograficos</p>
     <div class="row">
  <div class="col-sm-4"> </div>
   <div class="col-sm-4">
-  	<div class="contenido">
-  	<form class="form-group" method="post" action="../../controller/datosDem.php">
+    <form class="form-group" method="POST" action="../controller/update_datosDem.php">
 
-  		<div>
-  		<label class="radio-inline">Heladera: 	</label>
-  		<label class="radio-inline"><input type="radio" name="Heladera" required>Si</label>
-		<label class="radio-inline"><input type="radio" name="Heladera">No</label>
-		</div>
-		<div>
-  		<label class="radio-inline">Electricidad: 	</label>
-  		<label class="radio-inline"><input type="radio" name="Electricidad" required>Si</label>
-		<label class="radio-inline"><input type="radio" name="Electricidad">No</label>
-		</div>
-		<div>
-  		<label class="radio-inline">Mascota(s): 	</label>
-  		<label class="radio-inline"><input type="radio" name="Mascota" required>Si</label>
-		<label class="radio-inline"><input type="radio" name="Mascota">No</label>
-		</div>
-  		<label for="sel1">Tipo de Vivienda:</label>
-  		<select class="form-control" id="sel1" required>
-    		<option>1</option>
-    		<option>2</option>
-  		</select>
-  		<label for="sel2">Tipo de Calefacción:</label>
-  		<select class="form-control" id="sel2" required>
-    		<option>1</option>
-    		<option>2</option>
-  		</select>
-  		<label for="sel3">Tipo de Agua:</label>
-  		<select class="form-control" id="sel3" required>
-    		<option>1</option>
-    		<option>2</option>
-  		</select>
-  		<BR>
-  		 <input name="submit" class="btn btn-success" type="submit" value="Aceptar">
-  	</form>
-</div>
+
+      <input type="hidden" name="dd" value="{{datosDem[0]['id']}}">
+      <div class="form-group">
+      <label class="radio-inline">Heladera:   </label>
+      {% if datosDem[0]['heladera'] == 0 %}
+      <label class="radio-inline"><input type="radio" name="Heladera" value ="0" checked="checked" required>Si</label>
+    <label class="radio-inline"><input type="radio" name="Heladera" value ="1">No</label>
+    {% else %}
+    <label class="radio-inline"><input type="radio" name="Heladera" value ="0" required>Si</label>
+    <label class="radio-inline"><input type="radio" name="Heladera"  checked="checked" value ="1">No</label>
+    {% endif %}
+    </div>
+    <div>
+      <label class="radio-inline">Electricidad:   </label>
+      {% if datosDem[0]['electricidad'] == 0 %}
+      <label class="radio-inline"><input type="radio" name="Electricidad" value ="0"  checked="checked" required>Si</label>
+    <label class="radio-inline"><input type="radio" name="Electricidad" value ="1">No</label>
+    {% else %}
+      <label class="radio-inline"><input type="radio" name="Electricidad" value ="0"  required>Si</label>
+    <label class="radio-inline"><input type="radio" name="Electricidad" value ="1"  checked="checked">No</label>
+    {% endif %}
+    </div>
+    <div>
+      <label class="radio-inline">Mascota(s):   </label>
+      {% if datosDem[0]['mascota'] == 0 %}
+      <label class="radio-inline"><input type="radio" name="Mascota" value ="0" checked="checked" required>Si</label>
+    <label class="radio-inline"><input type="radio" name="Mascota" value ="1">No</label>
+    {% else %}
+    <label class="radio-inline"><input type="radio" name="Mascota" value ="0" required>Si</label>
+    <label class="radio-inline"><input type="radio" name="Mascota" value ="1" checked="checked">No</label>
+    {% endif %}
+    </div>
+      <label>Tipo de Vivienda:</label>
+      <select class="form-control" id="vivien" name="vivien" required>
+        <option value="" disabled selected>Seleccione un tipo</option>
+        {%for viv in vivienda%}
+        {% if datosDem[0]['tipo_vivienda_id'] == viv['id'] %}
+      <option value="{{viv['id']}}" multiple selected>{{viv['nombre']}}</option>        
+        {% else %}
+      <option value="{{viv['id']}}">{{viv['nombre']}}</option>
+      {% endif %}
+      {% endfor %}  
+      </select>
+      <br>
+      <label>Tipo de Calefacción:</label>
+      <select class="form-control" id="calef" name="calef" required>
+        <option value="" disabled selected>Seleccione un tipo</option>
+        {%for cal in calefaccion%}
+        {% if datosDem[0]['tipo_calefaccion_id'] == cal['id'] %}
+         <option value="{{cal['id']}}" multiple selected>{{cal['nombre']}}</option>
+        {% else %}
+      <option value="{{cal['id']}}">{{cal['nombre']}}</option>
+      {% endif %}
+      {% endfor %}  
+      </select>
+      <br>
+      <label>Tipo de Agua:</label>
+      <select class="form-control" id="water" name="water" required>
+        <option value="" disabled selected>Seleccione un tipo</option>
+        {%for ag in agua%}
+         {% if datosDem[0]['tipo_agua_id'] == ag['id'] %}
+      <option value="{{ag['id']}}" multiple selected>{{ag['nombre']}}</option>
+         {% else %}
+      <option value="{{ag['id']}}">{{ag['nombre']}}</option>
+      {% endif %}
+      {% endfor %}  
+      </select>
+      <BR>
+       <input name="submit" class="btn btn-success" type="submit" value="Aceptar">
+    </form>
+
   </div>
    <div class="col-sm-4"></div>
 </div>
-	<footer class="footerRelative">Proyecto de Software 2017 - Hospital Dr. Ricardo Gutierrez</footer>
-	
+{% endblock %}
+  
 </body>
+</html>

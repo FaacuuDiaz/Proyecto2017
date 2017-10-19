@@ -35,9 +35,23 @@ if ($ok) {
     if ($update == 1 && $updatePatient) {
         $id = validate_data($_POST['ptn']);
         //dd es el id de datos demograficos asociado
-        $dd = validate_data($_POST['dd']);
+        $dd     = validate_data($_POST['dd']);
+        $existe = Repository_Patient::check_update($typeDoc, $dni, $id);
+        if ($existe) {
+            $error = "Ya existe un paciente con ese tipo y numero de documento.";
 
-        Repository_Patient::update_patient($id, $name, $lastname, $address, $date, $gender, $typeDoc, $dni, $phone, $socialWork, $dd);
+            $patien   = Repository_Patient::get_patient($id);
+            $docs     = Repository_Patient::get_TypeDocs();
+            $social   = Repository_Patient::get_SocialWorks();
+            $template = $twig->loadTemplate('register_patient.twig');
+            $template->display(array("rol_user" => $_SESSION['rol'], "patient" => $patien, "update" => 1, "docs" => $docs, "social" => $social, 'error' => $error));
+
+        } else {
+            Repository_Patient::update_patient($id, $name, $lastname, $address, $date, $gender, $typeDoc, $dni, $phone, $socialWork, $dd);
+
+            header('Location:list_patient.php');
+        }
+
     } else {
         $heladera     = validate_data($_POST['Heladera']);
         $electricidad = validate_data($_POST['Electricidad']);
@@ -45,12 +59,32 @@ if ($ok) {
         $vivienda     = validate_data($_POST['vivien']);
         $calefaccion  = validate_data($_POST['calef']);
         $agua         = validate_data($_POST['water']);
-        $dd           = Repository_DatosDem::insert_datosDem($heladera, $electricidad, $mascota, $vivienda, $calefaccion, $agua);
 
-        Repository_Patient::insert_patient($name, $lastname, $address, $date, $gender, $typeDoc, $dni, $phone, $socialWork, $dd);
+        $existe = Repository_Patient::check_existe($typeDoc, $dni);
+        if ($existe) {
+            $error = "Ya existe un paciente con ese tipo y numero de documento.";
+
+            $demographic_new    = Repository_Permission::get_id_permission('demographic_new');
+            $insert_demographic = Repository_User::can_user($_SESSION['rol_id'], $demographic_new);
+
+            $docs        = Repository_Patient::get_TypeDocs();
+            $social      = Repository_Patient::get_SocialWorks();
+            $calefaccion = Repository_DatosDem::get_tipoCalefaccion();
+            $agua        = Repository_DatosDem::get_tipoAgua();
+            $vivienda    = Repository_DatosDem::get_tipoVivienda();
+
+            $template = $twig->loadTemplate('register_patient.twig');
+            $template->display(array("rol_user" => $_SESSION['rol'], "docs" => $docs, "social" => $social, "demografico" => $insert_demographic, "calefaccion" => $calefaccion, "agua" => $agua, "vivienda" => $vivienda, "error" => $error));
+
+        } else {
+            $dd = Repository_DatosDem::insert_datosDem($heladera, $electricidad, $mascota, $vivienda, $calefaccion, $agua);
+
+            Repository_Patient::insert_patient($name, $lastname, $address, $date, $gender, $typeDoc, $dni, $phone, $socialWork, $dd);
+
+            header('Location:list_patient.php');
+        }
 
     }
-    header('Location:list_patient.php');
 } else {
     header('Location:index.php');
 }

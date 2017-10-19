@@ -3,25 +3,30 @@
 {%block content%}
 
 <p>Registrarse</p>
+    {% if error is defined %}
+    <p class="text-danger">{{ error }}</p>
+    {% endif %}	
+    <div class="row">
 <div class="col-sm-5"></div>
     <div class="col-sm-4">
 	<form action="../controller/register_user.php" method="POST">
 		<div class="form-group">
-		<label>Nombre: </label><input type="text" name="name" placeholder="Ingrese el Nombre"> 
+		<label>Nombre: </label><input type="text" name="name" placeholder="Ingrese el Nombre" required> 
 		</div>
 		<div class="form-group">
-		<label>Apellido:</label> <input type="text" name="lastname" placeholder="Ingrese el Apellido">
+		<label>Apellido:</label> <input type="text" name="lastname" placeholder="Ingrese el Apellido" required>
 		</div>
 		<div class="form-group">
-		<label>Usuario: </label><input type="text" name="user" pattern="[a-zA-Z]{4,15}$" placeholder="Ingrese el usuario">
+		<label>Usuario:</label><input type="text" name="user" pattern="[a-zA-Z]{4,15}$" placeholder="Ingrese el usuario" required>
 		</div>
 		<div class="form-group">
-		<label>Contraseña: </label><input type="password" pattern="[a-z0-9A-Z]{6,12}$" name="pass" placeholder="Ingrese la contraseña">
+		<label>Contraseña: </label><input type="password" pattern="[a-z0-9A-Z]{6,12}$" name="pass" placeholder="Ingrese la contraseña" required>
 		</div>
 		<div class="form-group">
-		<label>Email: </label><input type="email" name="email" placeholder="ejemplo@gmail.com">
+		<label>Email: </label><input type="email" name="email" placeholder="ejemplo@gmail.com" required>
 		</div>
 		<input type="submit" name="submit" value="Aceptar">
 	</form>
+</div>
 </div>
 {%endblock%}
