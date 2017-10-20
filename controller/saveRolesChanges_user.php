@@ -14,7 +14,7 @@
 		$user_id=validate_data($_POST['id']);
 		$rol=validate_data($_POST['rol']);
 
-		Repository_User::update_role($rol,$user_id);
+		Repository_User::insert_role($rol,$user_id);
 
 		header('Location:assingRoles_user.php');
 		

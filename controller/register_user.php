@@ -15,16 +15,14 @@ $email    = validate_data($_POST['email']); //sanitizo los datos para evitar inj
 
 if (isset($_SESSION['rol'])) {
 
-    /*$user_update = Repository_Permission::get_id_permission('user_update'); //obtengo en id del permiso para actualizar
-    $ok          = Repository_User::can_user($_SESSION['rol'], $user_update);*///verifico si el rol puede actualizar un usuario
     $ok = check_permission('user_update');
 
     if (isset($_POST['update'])) {
         $update = validate_data($_POST['update']);
+        $id= validate_data($_POST['id']);
     }
 
     if ($update == 1 && $ok) {
-        $id     = $_SESSION['id'];
         $existe = Repository_User::check_update($user, $email, $id);
         if ($existe) {
             $error    = "Ya existe un usuario con ese usuario y/o email.";
@@ -38,19 +36,31 @@ if (isset($_SESSION['rol'])) {
             $template->display(array('rol_user' => $_SESSION['rol']));
         }
     }
-} else {
-    $existe = Repository_User::check_existe($user, $email);
-    if ($existe) {
-        $error    = "Ya existe un usuario con ese usuario y/o email.";
-        $template = $twig->loadTemplate('register.twig');
-        $template->display(array('error' => $error));
-    } else {
-        Repository_User::register_user($name, $lastname, $user, $pass, $email); //registro el usuario en la base de datos
-        $usr = Repository_User::get_user($user);
-        Repository_User::insert_role(3, $usr[0][0]); //le asigno como rol Recepcionista por defecto
 
-        $template = $twig->loadTemplate('login.twig');
-        $template->display(array());
+    $create= check_permission('user_new');
+    elseif($create){
+        if ($existe) {
+            $error    = "Ya existe un usuario con ese usuario y/o email.";
+            $template = $twig->loadTemplate('register.twig');
+            $template->display(array('error' => $error));
+        } 
+        else {
+            Repository_User::register_user($name, $lastname, $user, $pass, $email); //registro el usuario en la base de datos
+            $usr = Repository_User::get_user($user);
+            Repository_User::insert_role(3, $usr[0][0]); //le asigno como rol Recepcionista por defecto
+
+            $template = $twig->loadTemplate('login.twig');
+            $template->display(array());
+
+        }
 
     }
+    else{
+        header("Location:index.php");
+    }
+
+
+} else { 
+    header("Location:index.php");
 }
+?>

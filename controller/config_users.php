@@ -5,6 +5,7 @@
 	require_once('check_session.php');
 	require_once('incluir_twig.php');
 	require_once('pagination.php');
+	require_once("validate_data.php");
 	require_once('../model/Repository_Pagination.php');
 	require_once('../model/Repository_Patient.php');
 	require_once('../model/Repository_Hospital.php');

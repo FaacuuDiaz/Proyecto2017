@@ -116,6 +116,18 @@ class Repository_User
         return $result[0][0];
     }
 
+    public static function check_id_role($id)
+    {
+        $con     = Connection::open_connection();
+        $consult = "SELECT rol.id FROM usuario as u INNER JOIN usuario_tiene_rol as urol ON(u.id=urol.usuario_id) INNER JOIN rol ON(urol.rol_id=rol.id) WHERE u.id=:id";
+        $sen     = $con->prepare($consult);
+        $sen->bindParam(':id', $id);
+        $sen->execute();
+        $result = $sen->fetchAll();
+        Connection::close_connection();
+        return sizeof($result)>0;
+    }    
+
     public static function insert_role($id_role, $id_user)
     {
         $con     = Connection::open_connection();
@@ -233,5 +245,29 @@ class Repository_User
         Connection::close_connection();
         return sizeof($result) > 0;
     }
+
+
+    public static function get_roles_user($id){
+        $con     = Connection::open_connection();
+        $consult = "SELECT rol.id, rol.nombre FROM usuario as u INNER JOIN usuario_tiene_rol as urol ON(u.id=urol.usuario_id) INNER JOIN rol ON(urol.rol_id=rol.id) WHERE u.id=:id";
+        $sen     = $con->prepare($consult);
+        $sen->bindParam(':id', $id);
+        $sen->execute();
+        $result = $sen->fetchAll();
+        Connection::close_connection();
+        return $result;
+    }
+
+        public static function get_missing_roles($id){
+        $con     = Connection::open_connection();
+        $consult = "SELECT id, nombre FROM rol r NATURAL JOIN (SELECT rol.id FROM rol WHERE rol.id NOT IN (SELECT rol.id FROM usuario as u INNER JOIN usuario_tiene_rol as urol ON(u.id=urol.usuario_id) INNER JOIN rol ON(urol.rol_id=rol.id) WHERE u.id=:id))n";
+        $sen     = $con->prepare($consult);
+        $sen->bindParam(':id', $id);
+        $sen->execute();
+        $result = $sen->fetchAll();
+        Connection::close_connection();
+        return $result;
+    }
+
 
 }

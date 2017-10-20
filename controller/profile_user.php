@@ -13,8 +13,8 @@
 	if($ok){//tiene el permiso necesario para ver el perfil
 
 		$user=Repository_User::get_user($_SESSION['user']);
-		$template = $twig -> loadTemplate('profile_user.twig');
-		$template -> display(array('rol_user'=>$_SESSION['rol'],'info'=>$user));
+		$template = $twig -> loadTemplate('register.twig');
+		$template -> display(array('rol_user'=>$_SESSION['rol'],'user'=>$user[0]));
 	}
 	else{
 		header('Location:index.php');

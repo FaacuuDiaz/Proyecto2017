@@ -1,0 +1,25 @@
+{% extends 'base.twig' %}
+{% block content %}
+
+
+  <form action="../controller/saveRolesChanges_user.php" method="POST">
+
+  		{% if empty %}
+    		<p class="text-danger">{{ 'No hay mas roles por asignar/quitar' }}</p>
+  		{% else %}	
+	    <input type="hidden" name="id" value="{{usr['id']}}">
+	    Rol Para Agregar/Quitar<select name="rol">
+	    	{% set r = usr['id_rol'] %}
+	    	{% for rol in roles %}
+				{% if r == rol['id'] %}
+	    			<option value="{{rol['id']}}" selected>{{rol['nombre']}}</option>
+	    		{%else%}
+	    			<option value="{{rol['id']}}">{{rol['nombre']}}</option>
+	    		{%endif%}
+	    	{%endfor%}
+	    </select>
+	    <input type="submit" name="save" value="Aceptar">
+  		{% endif %}
+  </form>   
+
+{% endblock %}

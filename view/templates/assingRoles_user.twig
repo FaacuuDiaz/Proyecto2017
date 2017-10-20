@@ -14,7 +14,10 @@
         <tr>
     		<td>{{usr['nombre']}}</td>
     		<td>{{usr['apellido']}}</td>
-    		<form action="../controller/saveRolesChanges_user.php" method="POST">
+            <td>un rol</td>
+            <td><a href="assingRoles_config.php?usr={{usr['id']}}&sum=1"><img src="../view/img/mas.png" alt="agregar" height="40" width="40"></a></td>
+            <td><a href="assingRoles_config.php?usr={{usr['id']}}"><img src="../view/img/eliminar.png" alt="eliminar" height="40" width="40"></a></td> 
+    		{#<form action="../controller/saveRolesChanges_user.php" method="POST">
     				<input type="hidden" name="id" value="{{usr['id']}}">
     				<td><select name="rol">
     					{% set r = usr['id_rol'] %}
@@ -27,7 +30,7 @@
     					{%endfor%}
     				</select></td>
     				<td><input type="submit" name="save" value="Cambiar"></td>	
-    		</form>   
+    		</form>#}   
         </tr>
         {% endfor %}
     </table>
