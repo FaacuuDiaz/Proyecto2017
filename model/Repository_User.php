@@ -128,7 +128,7 @@ class Repository_User
         return sizeof($result)>0;
     }    
 
-    public static function insert_role($id_role, $id_user)
+    public static function insert_role_user($id_role, $id_user)
     {
         $con     = Connection::open_connection();
         $consult = "INSERT INTO usuario_tiene_rol (usuario_id,rol_id) VALUES (:user,:role)";
@@ -139,13 +139,24 @@ class Repository_User
         Connection::close_connection();
     }
 
-    public static function update_role($id_role, $id_user)
+    public static function update_role_user($id_role, $id_user)
     {
         $con     = Connection::open_connection();
         $consult = "UPDATE usuario_tiene_rol SET rol_id=:role WHERE usuario_id=:user";
         $sen     = $con->prepare($consult);
         $sen->bindParam(':user', $id_user);
         $sen->bindParam(':role', $id_role);
+        $sen->execute();
+        Connection::close_connection();
+    }
+
+    public static function remove_role_user($id_role, $id_user)
+    {
+        $con     = Connection::open_connection();
+        $consult = "DELETE FROM usuario_tiene_rol WHERE usuario_id=:id_user and rol_id=:id_role";
+        $sen     = $con->prepare($consult);
+        $sen->bindParam(':id_user', $id_user);
+        $sen->bindParam(':id_role', $id_role);
         $sen->execute();
         Connection::close_connection();
     }
@@ -209,6 +220,18 @@ class Repository_User
         Connection::close_connection();
         return $result;
     }
+
+        public static function get_usersWithOutRoles()
+    {
+        $con     = Connection::open_connection();
+        $consult = "SELECT id, nombre, apellido FROM usuario WHERE id NOT IN(SELECT usuario_id FROM usuario_tiene_rol)";
+        $sen     = $con->prepare($consult);
+        $sen->execute();
+        $result = $sen->fetchAll();
+        Connection::close_connection();
+        return $result;
+    }
+
 
     public static function all_roles()
     {
