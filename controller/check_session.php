@@ -15,5 +15,34 @@
 		return $ok;
 	}
 
+	function merge_data($data,$count){
+		$array=[];
+		
+		$i=0;
+		while ($count > $i){
+			$person=$data[$i];
+			$index = $data[$i][0];
+			$roles="";
+			while($count > $i && $index == $data[$i][0]) {
+				$roles = $roles.'/'.$data[$i]['nombre_rol'];
+				$i++;
+			}
+			$person['nombre_rol']=$roles.'/';
+			array_push($array, $person);
+		}
+		
+		return $array;	
+	}
+
+	function adapt_users_without_roles($data){
+		$array=[];
+		for($i=0;count($data)>$i;$i++){
+			$b=array_merge($data[$i],array('id_rol'=>0,'nombre_rol'=>'ninguno'));
+			array_push($array,$b);
+		}
+		return $array;
+
+	}
+
 
 ?>

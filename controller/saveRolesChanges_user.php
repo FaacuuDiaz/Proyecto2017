@@ -14,8 +14,12 @@
 		$user_id=validate_data($_POST['id']);
 		$rol=validate_data($_POST['rol']);
 
-		Repository_User::insert_role($rol,$user_id);
-
+		if(isset($_POST['agregar'])){
+			Repository_User::insert_role_user($rol,$user_id);
+		}
+		else{
+			Repository_User::remove_role_user($rol,$user_id);
+		}
 		header('Location:assingRoles_user.php');
 		
 	}

@@ -11,13 +11,20 @@
 
 	if(isset($_SESSION['rol']) && $ok){ //si es que puede actualizar al usuario
 		$template=$twig->loadTemplate('assingRoles_config.twig');
+		
+		$id=validate_data($_GET['usr']);//el id del usuario en cuestion que quiero agregar los roles
+
 		if (isset($_GET['sum'])){
-			$roles=Repository_User::get_missing_roles($_SESSION['id']);
+			
+			$roles=Repository_User::get_missing_roles($id);
+			$texto='agregar';
 		}
 		else{
-			$roles=Repository_User::get_roles_user($_SESSION['id']);
+			$texto='quitar';
+			$roles=Repository_User::get_roles_user($id);
 		}
-		$template->display(array('rol_user'=>$_SESSION['rol'],'roles'=>$roles,'empty'=>sizeof($roles)==0));
+
+		$template->display(array('rol_user'=>$_SESSION['rol'],'id'=>$id,'roles'=>$roles,'empty'=>sizeof($roles)==0,'text'=>$texto));
 
 
 	}

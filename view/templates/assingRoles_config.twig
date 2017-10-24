@@ -5,10 +5,10 @@
   <form action="../controller/saveRolesChanges_user.php" method="POST">
 
   		{% if empty %}
-    		<p class="text-danger">{{ 'No hay mas roles por asignar/quitar' }}</p>
+    		<p class="text-danger">{{ 'No hay mas roles por '~text }}</p>
   		{% else %}	
-	    <input type="hidden" name="id" value="{{usr['id']}}">
-	    Rol Para Agregar/Quitar<select name="rol">
+	    <input type="hidden" name="id" value="{{id}}">
+	    Rol Para {{text}}<select name="rol">
 	    	{% set r = usr['id_rol'] %}
 	    	{% for rol in roles %}
 				{% if r == rol['id'] %}
@@ -18,6 +18,9 @@
 	    		{%endif%}
 	    	{%endfor%}
 	    </select>
+
+	    <input type="hidden" name="{{text}}" value="{{text}}">
+
 	    <input type="submit" name="save" value="Aceptar">
   		{% endif %}
   </form>   
