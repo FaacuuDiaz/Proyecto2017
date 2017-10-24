@@ -2,6 +2,8 @@
 {% block content %}
 
 	<p>Asignar Roles</p>
+    
+
     <div class="table-responsive">
     <table class="table table-striped">
         <tr>
@@ -11,10 +13,11 @@
 
         </tr>
         {% for usr in users%}
+
         <tr>
     		<td>{{usr['nombre']}}</td>
     		<td>{{usr['apellido']}}</td>
-            <td>un rol</td>
+            <td>{{usr['nombre_rol']}}</td>
             <td><a href="assingRoles_config.php?usr={{usr['id']}}&sum=1"><img src="../view/img/mas.png" alt="agregar" height="40" width="40"></a></td>
             <td><a href="assingRoles_config.php?usr={{usr['id']}}"><img src="../view/img/eliminar.png" alt="eliminar" height="40" width="40"></a></td> 
     		{#<form action="../controller/saveRolesChanges_user.php" method="POST">

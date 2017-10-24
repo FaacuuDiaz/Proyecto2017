@@ -11,14 +11,16 @@ $name     = validate_data($_POST['name']);
 $lastname = validate_data($_POST['lastname']);
 $user     = validate_data($_POST['user']);
 $pass     = validate_data($_POST['pass']);
-$email    = validate_data($_POST['email']); //sanitizo los datos para evitar injecciones de algun tipo
+$email    = validate_data($_POST['email']);
+$update = validate_data($_POST['update']); //sanitizo los datos para evitar injecciones de algun tipo
 
 if (isset($_SESSION['rol'])) {
 
     $ok = check_permission('user_update');
 
-    if (isset($_POST['update'])) {
-        $update = validate_data($_POST['update']);
+    $create= check_permission('user_new');
+
+    if (isset($_POST['id'])) {
         $id= validate_data($_POST['id']);
     }
 
@@ -36,22 +38,20 @@ if (isset($_SESSION['rol'])) {
             $template->display(array('rol_user' => $_SESSION['rol']));
         }
     }
-
-    $create= check_permission('user_new');
     elseif($create){
+        $existe = Repository_User::check_existe($user, $email);
         if ($existe) {
             $error    = "Ya existe un usuario con ese usuario y/o email.";
             $template = $twig->loadTemplate('register.twig');
-            $template->display(array('error' => $error));
+            $template->display(array('rol_user'=>$_SESSION['rol'],'error' => $error));
         } 
         else {
+
+            require_once "config_users.php";
             Repository_User::register_user($name, $lastname, $user, $pass, $email); //registro el usuario en la base de datos
             $usr = Repository_User::get_user($user);
             Repository_User::insert_role(3, $usr[0][0]); //le asigno como rol Recepcionista por defecto
-
-            $template = $twig->loadTemplate('login.twig');
-            $template->display(array());
-
+            config_users();
         }
 
     }

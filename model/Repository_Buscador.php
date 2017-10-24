@@ -101,7 +101,7 @@ class Repository_Buscador
     {
         $name    = "%" . $name . "%";
         $con     = Connection::open_connection();
-        $consult = "SELECT * FROM usuario WHERE nombre LIKE :name ";
+        $consult = "SELECT * FROM usuario WHERE username LIKE :name ";
         $sen     = $con->prepare($consult);
         $sen->bindParam(':name', $name);
         $sen->execute();
@@ -125,7 +125,7 @@ class Repository_Buscador
     {
         $name    = "%" . $name . "%";
         $con     = Connection::open_connection();
-        $consult = "SELECT * FROM usuario WHERE nombre LIKE :name and activo=:estado";
+        $consult = "SELECT * FROM usuario WHERE username LIKE :name and activo=:estado";
         $sen     = $con->prepare($consult);
         $sen->bindParam(':name', $name);
         $sen->bindParam(':estado', $estado);
