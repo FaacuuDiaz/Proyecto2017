@@ -2,6 +2,8 @@
 {% block content %}
 
 	<p>Asignar Roles</p>
+    
+
     <div class="table-responsive">
     <table class="table table-striped">
         <tr>
@@ -11,6 +13,7 @@
 
         </tr>
         {% for usr in users%}
+
         <tr>
     		<td>{{usr['nombre']}}</td>
     		<td>{{usr['apellido']}}</td>
