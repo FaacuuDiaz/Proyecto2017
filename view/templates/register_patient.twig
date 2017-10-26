@@ -9,8 +9,9 @@
 
 	{% if update != 1 %}
     	<div class="col-sm-1"></div>
+    	<form action="../controller/registerData_patient.php" method="POST">
 <div class="col-sm-4">
-		<form action="../controller/registerData_patient.php" method="POST">
+		
 			<input type="hidden" name="updt" value="0">
 			<div class="form-group">
 			<label>Apellido:</label><input type="text" name="lastname" placeholder="Apellido" required>
@@ -19,7 +20,7 @@
 			<label>Nombre:</label><input type="text" name="name" placeholder="Nombre" required>
 			</div>
 			<div class="form-group">
-			<label>Fecha de Nacimiento:</label><input type="date" name="date" min="1930-01-01" max="2030-12-12" placeholder="yyyy-mm-dd" required> 
+			<label>Fecha de Nacimiento:</label><input type="date" name="date" min="1930-01-01" max="2030-12-12" required> <br/>Respetar el formato aaaa-mm-dd
 			</div>
 			<div class="form-group">
 			<label>Genero:</label> <select name="gender" required>
@@ -51,16 +52,17 @@
 
 				<!-- hay que ver el seleccione tipo como se guardaria -->
 
-				<option value="" disabled selected>Seleccione un tipo</option>
+				<option value="-1" selected>Seleccione un tipo</option>
 							{%for soc in social%}
 								<option value="{{soc['id']}}">{{soc['nombre']}}</option>
 							{%endfor%}	
 						</select>
 			  		</div>
-			  		</div>
-<div class="col-sm-2"></div>
-<div class="col-sm-4">
 
+</div>
+<div class="col-sm-2">	
+</div>
+<div class="col-sm-4">
 		{%if demografico is defined and demografico%}	
 		 <div class="form-group">
 		 <label>Heladera: 	</label>
@@ -78,12 +80,12 @@
 		<label class="radio-inline"><input type="radio" name="Mascota" value ="1">No</label>
 		</div>  	
 		<div class="form-group">		
-	  		<label for="sel1">Tipo de Vivienda:</label>
+	  		<label>Tipo de Vivienda:</label>
       <select class="form-control" id="vivien" name="vivien" required>
       	<option value="" disabled selected>Seleccione un tipo</option>
         {%for viv in vivienda%}
         {% if datosDem[0][tipo_vivienda_id] == viv['id'] %}
-      <option value="{{viv['id']}}" selected>{{viv['nombre']}}</option>        
+      <option value="{{viv['id']}}">{{viv['nombre']}}</option>        
         {% else %}
       <option value="{{viv['id']}}">{{viv['nombre']}}</option>
       {% endif %}
@@ -91,7 +93,7 @@
       </select>
       </div>
       <div class="form-group">
-      <label for="sel2">Tipo de Calefacción:</label>
+      <label>Tipo de Calefacción:</label>
       <select class="form-control" id="calef" name="calef" required>
       	<option value="" disabled selected>Seleccione un tipo</option>
         {%for cal in calefaccion%}
@@ -100,7 +102,7 @@
       </select>
       </div>
       <div class="form-group">
-      <label for="sel3">Tipo de Agua:</label>
+      <label>Tipo de Agua:</label>
       <select class="form-control" id="water" name="water" required>
       	<option value="" disabled selected>Seleccione un tipo</option>
         {%for ag in agua%}
@@ -110,10 +112,10 @@
   		</div>
 
 				<input type="submit" name="Aceptar" value="Aceptar"><br>			 
-			</form>
+			
 		{%endif%}		
 	</div>
-
+</form>
 	
 	{%else%}
 	<div class="col-sm-4"></div>
