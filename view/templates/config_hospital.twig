@@ -17,7 +17,7 @@
 		<textarea class="form-control" name="descrpt" rows="5" placeholder="Ingrese la descripcion" >{{info[0]['descripcion']}}</textarea>
 		</div>
 		<div class="form-group">
-		<labe>Email:</labe>
+		<label>Email:</label>
 		 <input type="email" name="email" value="{{info[0]['email']}}">
 		</div>
 		<div class="form-group">
@@ -25,7 +25,7 @@
 		<input type="number" name="pagination" placeholder="Numero de pagination" value="{{info[0]['paginacion']}}">
 		</div>
 		<div class="form-group">
-		<label>Estado de la Pagina:</label><select name="enabled"><br>
+		<label>Estado de la Pagina:</label><select name="enabled">
 								{% if info[0]['habilitado'] == 1%}
 									<option value="{{1}}" selected> {{'Habilitado'}}</option>
 									<option value="{{0}}"> {{'Bloqueado'}}</option>
