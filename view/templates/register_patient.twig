@@ -20,7 +20,7 @@
 			<label>Nombre:</label><input type="text" name="name" placeholder="Nombre" required>
 			</div>
 			<div class="form-group">
-			<label>Fecha de Nacimiento:</label><input type="date" name="date" min="1930-01-01" max="2030-12-12" required> <br/>Respetar el formato aaaa-mm-dd
+			<label>Fecha de Nacimiento:</label><input type="date" name="date" min="1930-01-01" max="2030-12-12" required> <br/>*Para firefox: Respetar el formato aaaa-mm-dd
 			</div>
 			<div class="form-group">
 			<label>Genero:</label> <select name="gender" required>
@@ -52,7 +52,7 @@
 
 				<!-- hay que ver el seleccione tipo como se guardaria -->
 
-				<option value="-1" selected>Seleccione un tipo</option>
+				<option value="" disabled selected required>Seleccione un tipo</option>
 							{%for soc in social%}
 								<option value="{{soc['id']}}">{{soc['nombre']}}</option>
 							{%endfor%}	
@@ -125,16 +125,16 @@
 			<input type="hidden" name="ptn" value="{{patient[0]['id']}}">
 			<input type="hidden" name="dd" value="{{patient[0]['datos_demograficos']}}">
 			<div class="form-group">
-			<label>Apellido:</label><input type="text" name="lastname" placeholder="Apellido" value="{{patient[0]['apellido']}}">
+			<label>Apellido:</label><input type="text" name="lastname" placeholder="Apellido" value="{{patient[0]['apellido']}}" required>
 			</div>
 			<div class="form-group">
-			<label>Nombre:</label><input type="text" name="name" placeholder="Nombre" value="{{patient[0]['nombre']}}"> 
+			<label>Nombre:</label><input type="text" name="name" placeholder="Nombre" value="{{patient[0]['nombre']}}" required> 
 			</div>
 			<div class="form-group">
-			<label>Fecha de Nacimiento:</label><input type="date" name="date" value="{{patient[0]['fecha_nac']}}"> 
+			<label>Fecha de Nacimiento:</label><input type="date" name="date" value="{{patient[0]['fecha_nac']}}" required> 
 			</div>
 			<div class="form-group">
-			<label>Genero:</label> <select name="gender">
+			<label>Genero:</label> <select name="gender" required>
 
 				<option value="" disabled>Seleccione un tipo</option>
 						{% if patient[0]['genero']=='M'   %}
@@ -148,7 +148,7 @@
 					</select>
 			</div>
 			<div class="form-group">
-			<label>Tipo Documento:</label> <select name="typeDoc">
+			<label>Tipo Documento:</label> <select name="typeDoc" required>
 				<option value="" disabled>Seleccione un tipo</option>
 								{%for doc in docs%}
 									{% if patient[0]['tipo_doc_id'] == doc['id'] %}
@@ -160,19 +160,19 @@
 							</select> 
 			</div>
 			<div class="form-group">
-			<label>N° Documento: </label><input type="number" name="dni" value="{{patient[0]['numero']}}">  
+			<label>N° Documento: </label><input type="number" name="dni" value="{{patient[0]['numero']}}" required>  
 			</div>
 			<div class="form-group">
-			<label>Domicilio: </label><input type="text" name="address" placeholder="Ingrese su Domicilio" value="{{patient[0]['domicilio']}}"> 
+			<label>Domicilio: </label><input type="text" name="address" placeholder="Ingrese su Domicilio" value="{{patient[0]['domicilio']}}" required> 
 			</div>
 			<div class="form-group">
 			<label>Telefono:</label> <input type="text" name="phone" placeholder="Ingrese un numero Telefonico" value="{{patient[0]['tel']}}"> 
 			</div>
 			<div class="form-group">
-			<label>Obra social:</label><select name="socialWork">
+			<label>Obra social:</label><select name="socialWork" required>
 				<option value="" disabled>Seleccione un tipo</option>
 							{%for soc in social%}
-								{% if ptn[0]['obra_social_id'] == soc['id'] %}
+								{% if patient[0]['obra_social_id'] == soc['id'] %}
 									<option value="{{soc['id']}}" selected>{{soc['nombre']}}</option>
 								{% else %}
 									<option value="{{soc['id']}}">{{soc['nombre']}}</option>
@@ -185,8 +185,8 @@
 			<input type="submit" name="Aceptar" value="Aceptar"><br>			 
 		</form>
 	
-
+</div>
 	{% endif %}
-	</div>
+	
 </div>
 {%endblock%}
