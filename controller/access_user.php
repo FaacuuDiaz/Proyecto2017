@@ -13,7 +13,9 @@ $pass = validate_data($_POST['pass']); //sanitizacion de datos
 
 $exist = Repository_User::check_user($user, $pass); //verifico si existe el usuario
 
-if ($exist) {
+$withoutData=(validate_string($user) && validate_string($pass)); // verifico que no tenga inputs en blanco
+
+if ($exist && $withoutData) {
 
     $habilitado = Repository_Hospital::get_infoEnabled(); //obtengo si la pagina no esta bloqueada
     $permission = Repository_Permission::get_id_permission("config"); //optengo el id del permiso configuracion maestra

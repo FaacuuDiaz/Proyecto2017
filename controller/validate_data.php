@@ -31,7 +31,6 @@
 
 
 
-
   function verification_data($data){
   	if (isset($data)){
   		return validate_data($data);
