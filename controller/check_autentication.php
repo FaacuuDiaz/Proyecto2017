@@ -16,6 +16,7 @@
 	if ($habilitado==1 || $ok ){
 		if(isset($_SESSION['rol'])){
 			$mi_rol=$_SESSION['rol'];
+			$titulo=Repository_Hospital::get_Title();
 			$template = $twig -> loadTemplate('inicio.twig');
 			$template -> display(array('rol_user'=>$mi_rol));
 		}

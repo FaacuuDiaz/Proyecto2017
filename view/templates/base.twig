@@ -23,7 +23,13 @@
 	<div class="menu_bar">
 		<a href="#" class="bt-menu"><img src="../view/img/icon-list.png" alt="menu" height="30" width="30"> Menú</a>
 	</div>	
-	<header><div class="titulo">Hospital DR. Ricardo Gutierrez</div>
+	<header><div class="titulo">
+		{% if title is defined %}
+			{{title}}
+		{%else%}
+			Hospital DR. Ricardo Gutierrez
+		{%endif%}
+		</div>
 	{% block nav %}
 		{% if rol_user is defined %}
 			{% include 'nav_'~rol_user~'.twig' %}			
