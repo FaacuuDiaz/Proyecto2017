@@ -18,7 +18,7 @@
 			$mi_rol=$_SESSION['rol'];
 			$titulo=Repository_Hospital::get_Title();
 			$template = $twig -> loadTemplate('inicio.twig');
-			$template -> display(array('rol_user'=>$mi_rol));
+			$template -> display(array('title'=>$titulo,'rol_user'=>$mi_rol));
 		}
 		else{
 			$template= $twig->loadTemplate('inicio.twig');
