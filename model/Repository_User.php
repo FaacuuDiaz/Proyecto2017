@@ -104,6 +104,18 @@ class Repository_User
         return $result[0][0];
     }
 
+    public static function get_id_roles($id)
+    {
+        $con     = Connection::open_connection();
+        $consult = "SELECT rol.id FROM usuario as u INNER JOIN usuario_tiene_rol as urol ON(u.id=urol.usuario_id) INNER JOIN rol ON(urol.rol_id=rol.id) WHERE u.id=:id";
+        $sen     = $con->prepare($consult);
+        $sen->bindParam(':id', $id);
+        $sen->execute();
+        $result = $sen->fetchAll();
+        Connection::close_connection();
+        return $result;
+    }
+
     public static function get_id_role($id)
     {
         $con     = Connection::open_connection();
@@ -113,7 +125,7 @@ class Repository_User
         $sen->execute();
         $result = $sen->fetchAll();
         Connection::close_connection();
-        return $result[0][0];
+        return $result;
     }
 
     public static function check_id_role($id)
