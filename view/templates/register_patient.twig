@@ -1,4 +1,26 @@
 {% extends 'base.twig' %}
+{% block scripts %}
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<script>
+    $(document).ready(function(){
+        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+</script>
+
+{% endblock %}
 {%block content%}
 
 	<p>Registrar Paciente</p>
@@ -19,9 +41,10 @@
 			<div class="form-group">
 			<label>Nombre:</label><input type="text" name="name" placeholder="Nombre" required>
 			</div>
-			<div class="form-group">
-			<label>Fecha de Nacimiento:</label><input type="date" name="date" min="1930-01-01" max="2030-12-12" required> <br/>*Para firefox: Respetar el formato aaaa-mm-dd
-			</div>
+			 <div class="form-group"> <!-- Date input -->
+        <label class="control-label" for="date">Fecha de Nacimiento:</label>
+        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+      </div>
 			<div class="form-group">
 			<label>Genero:</label> <select name="gender" required>
         	<option value="" disabled selected>Seleccione un tipo</option>
@@ -48,7 +71,7 @@
 			<label>Telefono:</label> <input type="text" name="phone" placeholder="Ingrese un numero Telefonico"> 
 			</div>
 			<div class="form-group">
-			<label>Obra social:</label><select name="socialWork"required>
+			<label>Obra social:</label><select name="socialWork" required>
 
 				<!-- hay que ver el seleccione tipo como se guardaria -->
 
