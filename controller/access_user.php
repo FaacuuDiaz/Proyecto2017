@@ -13,6 +13,8 @@ $pass = validate_data($_POST['pass']); //sanitizacion de datos
 
 $exist = Repository_User::check_user($user, $pass); //verifico si existe el usuario
 
+$withoutData=(validate_string($user) && validate_string($pass)); // verifico que no tenga inputs en blanco
+
 if ($exist) {
 
     $habilitado = Repository_Hospital::get_infoEnabled(); //obtengo si la pagina no esta bloqueada
@@ -44,13 +46,15 @@ if ($exist) {
 
                         
                         $user_rol = Repository_User::get_id_role($user_data[0][0]); // obtengo el id del rol del usuario
-                        $_SESSION['rol_id'] = $user_rol;
-                            if ($user_rol != 1) { // verifico que sea del id del admin u cualquier otro superuser
-                                $_SESSION['rol'] = 'common'; //$mi_rol;
-                            }
-                            else{
-                                $_SESSION['rol'] = 'admin';
-                            }
+                        sort($user_rol);
+
+                        $_SESSION['rol_id'] = $user_rol[0][0];
+                        if ($user_rol[0][0] != 1) { // verifico que sea del id del admin u cualquier otro superuser
+                            $_SESSION['rol'] = 'common'; //$mi_rol;
+                        }
+                        else{
+                            $_SESSION['rol'] = 'admin';
+                        }
 
                         header("Location:index.php");
                     }

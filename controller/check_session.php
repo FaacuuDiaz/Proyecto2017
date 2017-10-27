@@ -3,7 +3,29 @@
 		session_start();
 	}
 
+
 	function check_permission($permission_name){
+		$ret=false;
+		if(isset($_SESSION['id'])){
+			$id_permission=Repository_Permission::get_id_permission($permission_name);
+			$permissions=Repository_User::get_id_roles($_SESSION['id']);
+			if(sizeof($permissions) > 1 ){
+				for($i=0;$i<sizeof($permissions);$i++) {
+					if (Repository_User::can_user($permissions[$i][0],$id_permission)){
+						$ret=true;
+						break;
+					}	
+				}
+			}
+			else{
+				$ret=evaluate_permission($permissions[0][0],$id_permission);
+			}
+		}	
+		return $ret;
+	}
+
+
+	function evaluate_permission($permission_name){
 
 		if(!isset($_SESSION['rol_id'])){
 			return false;

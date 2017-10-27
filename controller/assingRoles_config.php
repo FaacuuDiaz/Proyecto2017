@@ -13,11 +13,9 @@
 		$template=$twig->loadTemplate('assingRoles_config.twig');
 		
 		$id=validate_data($_GET['usr']);//el id del usuario en cuestion que quiero agregar los roles
-
-		if (isset($_GET['sum'])){
-			
-			$roles=Repository_User::get_missing_roles($id);
-			$texto='agregar';
+		if(isset($_GET['sum'])){					
+				$roles=Repository_User::get_missing_roles($id);
+				$texto='agregar';
 		}
 		else{
 			$texto='quitar';
@@ -25,8 +23,7 @@
 		}
 
 		$template->display(array('rol_user'=>$_SESSION['rol'],'id'=>$id,'roles'=>$roles,'empty'=>sizeof($roles)==0,'text'=>$texto));
-
-
+		
 	}
 	else{
 		header('Location:index.php');

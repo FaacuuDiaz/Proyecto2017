@@ -9,17 +9,12 @@
 	require_once("../model/Repository_Permission.php");
 	require_once("../model/Repository_User.php");
 
-	$config=Repository_Permission::get_id_permission("config");
-	$ok=Repository_User::can_user($_SESSION['rol_id'],$config);
+	$ok=check_permission('config');
 
 	if($ok){
 
-	//echo "entro";
-	//if($_SESSION['rol']=='admin'){
-		echo isset($_POST['update']);
-		//$update=validate_data($_POST['update']);
 		if(!isset($_POST['update'])){
-			//echo "entro al segundo if";
+
 			$info=Repository_Hospital::get_privateInfo();
 			$template=$twig->loadTemplate("config_hospital.twig");
 			$template->display(array("rol_user"=>$_SESSION['rol'],"info"=>$info));
