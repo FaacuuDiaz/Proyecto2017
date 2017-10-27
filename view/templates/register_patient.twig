@@ -1,4 +1,10 @@
 {% extends 'base.twig' %}
+
+{% block scripts %}
+
+{% endblock %}	
+
+
 {%block content%}
 
 	<p>Registrar Paciente</p>
@@ -20,8 +26,11 @@
 			<label>Nombre:</label><input type="text" name="name" placeholder="Nombre" required>
 			</div>
 			<div class="form-group">
-			<label>Fecha de Nacimiento:</label><input type="date" name="date" min="1930-01-01" max="2030-12-12" required> <br/>*Para firefox: Respetar el formato aaaa-mm-dd
+			<label>Fecha de Nacimiento:</label>
+			<input type="date" name="date" min="1930-01-01" max="2030-12-12" required> 
+			<br/>*Para firefox: Respetar el formato aaaa-mm-dd
 			</div>
+      		</div>
 			<div class="form-group">
 			<label>Genero:</label> <select name="gender" required>
         	<option value="" disabled selected>Seleccione un tipo</option>
