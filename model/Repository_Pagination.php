@@ -133,36 +133,39 @@
     //empieza la consultas de busqueda de los usuarios
 
 
-    public static function search_user_name($name,$from, $cant)
+    public static function search_user_name($id,$name,$from, $cant)
     {
         $name    = "%" . $name . "%";
         $con     = Connection::open_connection();
-        $consult = "SELECT * FROM usuario WHERE nombre LIKE :name LIMIT $from , $cant";
+        $consult = "SELECT * FROM usuario WHERE id<>:id and nombre LIKE :name LIMIT $from , $cant";
         $sen     = $con->prepare($consult);
         $sen->bindParam(':name', $name);
+        $sen->bindParam(':id',$id);
         $sen->execute();
         $result = $sen->fetchAll();
         Connection::close_connection();
         return $result;
     }
 
-    public static function search_user_estado($estado,$from, $cant)
+    public static function search_user_estado($id,$estado,$from, $cant)
     {
         $con     = Connection::open_connection();
-        $consult = "SELECT * FROM usuario WHERE activo=:estado LIMIT $from , $cant";
+        $consult = "SELECT * FROM usuario WHERE id<>:id and activo=:estado LIMIT $from , $cant";
         $sen     = $con->prepare($consult);
         $sen->bindParam(':estado', $estado);
+        $sen->bindParam(':id',$id);
         $sen->execute();
         $result = $sen->fetchAll();
         Connection::close_connection();
         return $result;
     }
-    public static function search_user_dos($name, $estado,$from, $cant)
+    public static function search_user_dos($id, $name, $estado,$from, $cant)
     {
         $name    = "%" . $name . "%";
         $con     = Connection::open_connection();
-        $consult = "SELECT * FROM usuario WHERE nombre LIKE :name and activo=:estado LIMIT $from , $cant";
+        $consult = "SELECT * FROM usuario WHERE id<>:id and nombre LIKE :name and activo=:estado LIMIT $from , $cant";
         $sen     = $con->prepare($consult);
+        $sen->bindParam(':id',$id);
         $sen->bindParam(':name', $name);
         $sen->bindParam(':estado', $estado);
         $sen->execute();

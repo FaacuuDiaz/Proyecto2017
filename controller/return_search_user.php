@@ -4,8 +4,12 @@ ini_set('display_errors', '1');
 
 require_once "incluir_twig.php";
 require_once "check_session.php";
+require_once "pagination.php";
+require_once('../model/Repository_Hospital.php');
+require_once('../model/Repository_Pagination.php');
 require_once "../model/Repository_Permission.php";
 require_once "../model/Repository_User.php";
+require_once "../model/Repository_Patient.php";
 require_once "../model/Repository_Buscador.php";
 require_once "validate_data.php";
 
@@ -15,12 +19,19 @@ if ($ok) {
     //si el usuario tiene permiso de acceder a esa pagina
 
     /* verifico que todos los datos del filtro esten seteados y si estan seteados sanitizo los datos para evitar injeccciones xcss */
-    $empty = true;
+    if (isset($_GET['page'])) {
+        $content = pagination_search_user($_SESSION['id'],$_SESSION['name'],$_SESSION['estado']);
+    }
+    else{
+        $name   = validate_data($_POST['name']);
+        $estado = validate_data($_POST['estado']);
+        $content = pagination_search_user($_SESSION['id'],$name,$estado);
+    
+        $_SESSION['name']=$name;
+        $_SESSION['estado']=$estado;
 
-    $name   = validate_data($_POST['name']);
-    $estado = validate_data($_POST['estado']);
-
-    if ($name != "" && $estado == -1) {
+    }
+    /*if ($name != "" && $estado == -1) {
         $user_search = Repository_Buscador::search_user_name($name);
         $empty       = false;
 
@@ -31,12 +42,12 @@ if ($ok) {
     } elseif ($name != "" && $estado != -1) {
         $user_search = Repository_Buscador::search_user_dos($name, $estado);
         $empty       = false;
-    }
+    }*/
 
-    if (!$empty) {
+    if ($content['content'] != '') {
 
         $template = $twig->loadTemplate("search_user.twig");
-        $template->display(array("rol_user" => $_SESSION['rol'], 'user_search' => $user_search));
+        $template->display(array("rol_user" => $_SESSION['rol'], 'user_search' => $content["content"],'actual'=>$content['actual'], 'pages'=>$content['pages'], 'ruta'=>'return_search_user.php'));
     } else {
         $template = $twig->loadTemplate("search_user.twig");
         $template->display(array("rol_user" => $_SESSION['rol']));
