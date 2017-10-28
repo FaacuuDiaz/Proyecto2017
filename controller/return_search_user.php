@@ -31,18 +31,6 @@ if ($ok) {
         $_SESSION['estado']=$estado;
 
     }
-    /*if ($name != "" && $estado == -1) {
-        $user_search = Repository_Buscador::search_user_name($name);
-        $empty       = false;
-
-    } elseif ($name == "" && $estado != -1) {
-
-        $user_search = Repository_Buscador::search_user_estado($estado);
-        $empty       = false;
-    } elseif ($name != "" && $estado != -1) {
-        $user_search = Repository_Buscador::search_user_dos($name, $estado);
-        $empty       = false;
-    }*/
 
     if ($content['content'] != '') {
 
