@@ -8,8 +8,8 @@
 
 
 	$ok=check_permission('user_update');
-
-	if(isset($_SESSION['rol']) && $ok){ //si es que puede actualizar al usuario
+	$withoutData=(validate_string($_GET['usr'])); // verifico que no venga nada raro o en blanco
+	if(isset($_SESSION['rol']) && $ok && $withoutData){ //si es que puede actualizar al usuario
 		$template=$twig->loadTemplate('assingRoles_config.twig');
 		
 		$id=validate_data($_GET['usr']);//el id del usuario en cuestion que quiero agregar los roles
