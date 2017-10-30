@@ -10,13 +10,14 @@ require_once "../model/Repository_DatosDem.php";
 require_once "../model/Repository_Permission.php";
 require_once "../model/Repository_User.php";
 
-$patient_new = Repository_Permission::get_id_permission("paciente_new");
-$ok          = Repository_User::can_user($_SESSION['rol_id'], $patient_new);
+/*$patient_new = Repository_Permission::get_id_permission("paciente_new");
+$ok          = Repository_User::can_user($_SESSION['rol_id'], $patient_new);*/
+
+$ok = check_permission('paciente_new');
 
 if ($ok) {
 //tiene el permiso necesario para ver cargar al paciente
 
-//if (isset($_SESSION['rol'])) {
     $name       = validate_data($_POST['name']);
     $lastname   = validate_data($_POST['lastname']);
     $address    = validate_data($_POST['address']);
@@ -29,15 +30,18 @@ if ($ok) {
 
     $update = validate_data($_POST['updt']);
 
-    $patient_update = Repository_Permission::get_id_permission("paciente_update");
-    $updatePatient  = Repository_User::can_user($_SESSION['rol_id'], $patient_update);
 
+    $right=(validate_string($_POST['name']) && validate_string($_POST['lastname']) && validate_string($_POST['address']) && validate_string($_POST['date']) && validate_string($_POST['gender']) && validate_string($_POST['typeDoc']) && validate_string($_POST['dni']) && validate_string($_POST['phone']) && validate_string($_POST['socialWork']));//verifico si es que no se ingresaron valores en blanco y sanitizados
+
+    /*$patient_update = Repository_Permission::get_id_permission("paciente_update");
+    $updatePatient  = Repository_User::can_user($_SESSION['rol_id'], $patient_update);*/
+    $updatePatient=check_permission('paciente_update');
     if ($update == 1 && $updatePatient) {
         $id = validate_data($_POST['ptn']);
         //dd es el id de datos demograficos asociado
         $dd     = validate_data($_POST['dd']);
         $existe = Repository_Patient::check_update($typeDoc, $dni, $id);
-        if ($existe) {
+        if ($existe || !$right) {
             $error = "Ya existe un paciente con ese tipo y numero de documento.";
 
             $patien   = Repository_Patient::get_patient($id);
@@ -61,7 +65,7 @@ if ($ok) {
         $agua         = validate_data($_POST['water']);
 
         $existe = Repository_Patient::check_existe($typeDoc, $dni);
-        if ($existe) {
+        if ($existe || !$right) {
             $error = "Ya existe un paciente con ese tipo y numero de documento.";
 
             $demographic_new    = Repository_Permission::get_id_permission('demographic_new');

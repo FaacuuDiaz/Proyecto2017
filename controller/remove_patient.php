@@ -10,9 +10,9 @@ require_once "../model/Repository_User.php";
 require_once "../model/Repository_Permission.php";
 require_once "../model/Repository_DatosDem.php";
 
-$patient_destroy = Repository_Permission::get_id_permission('paciente_destroy'); //obtengo en id del permiso para eliminar
-$destroy_patient = Repository_User::can_user($_SESSION['rol_id'], $patient_destroy); //verifico si el rol puede eliminar un paciente
-
+/*$patient_destroy = Repository_Permission::get_id_permission('paciente_destroy'); //obtengo en id del permiso para eliminar
+$destroy_patient = Repository_User::can_user($_SESSION['rol_id'], $patient_destroy); //verifico si el rol puede eliminar un paciente*/
+$destroy_patient= check_permission('paciente_destroy');
 
 if ($destroy_patient) {
     // si tiene el permiso donde puede eliminar un paciente

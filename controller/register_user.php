@@ -7,6 +7,12 @@ require_once "validate_data.php";
 require_once "../model/Repository_User.php";
 require_once "../model/Repository_Permission.php";
 
+$ok = check_permission('user_update');
+$create= check_permission('user_new');
+
+
+if ($ok || $create) {
+
 $name     = validate_data($_POST['name']);
 $lastname = validate_data($_POST['lastname']);
 $user     = validate_data($_POST['user']);
@@ -14,11 +20,7 @@ $pass     = validate_data($_POST['pass']);
 $email    = validate_data($_POST['email']);
 $update = validate_data($_POST['update']); //sanitizo los datos para evitar injecciones de algun tipo
 
-if (isset($_SESSION['rol'])) {
-
-    $ok = check_permission('user_update');
-
-    $create= check_permission('user_new');
+$right=(validate_string($_POST['name']) && validate_string($_POST['lastname']) && validate_string($_POST['user']) && validate_string($_POST['pass']) && validate_string($_POST['email']));
 
     if (isset($_POST['id'])) {
         $id= validate_data($_POST['id']);
@@ -26,7 +28,7 @@ if (isset($_SESSION['rol'])) {
 
     if ($update == 1 && $ok) {
         $existe = Repository_User::check_update($user, $email, $id);
-        if ($existe) {
+        if ($existe || !$right) {
             $error    = "Ya existe un usuario con ese usuario y/o email.";
             $user     = Repository_User::get_user($_SESSION['user']);
             $template = $twig->loadTemplate('profile_user.twig');
@@ -40,7 +42,7 @@ if (isset($_SESSION['rol'])) {
     }
     elseif($create){
         $existe = Repository_User::check_existe($user, $email);
-        if ($existe) {
+        if ($existe || !$right) {
             $error    = "Ya existe un usuario con ese usuario y/o email.";
             $template = $twig->loadTemplate('register.twig');
             $template->display(array('rol_user'=>$_SESSION['rol'],'error' => $error));

@@ -14,7 +14,7 @@ ini_set('display_errors', '1');
 	$create = check_permission('user_new');
 	if($update || $create){
 		
-		if(isset($_GET['usr']) && $update){
+		if(isset($_GET['usr']) && validate_string($_GET['usr']) && $update){
 
 			$user=validate_data($_GET['usr']);
 			$info=Repository_User::get_user($user);

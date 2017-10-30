@@ -12,7 +12,7 @@
 	$ok=Repository_User::can_user($_SESSION['rol_id'],$user_update);*/
 	$ok=check_permission('user_update');
 
-	if($ok && validate_integer($_GET['usr']) && validate_integer($_GET['state'])){ //si el usuario tiene permiso de acceder a esa pagina
+	if($ok && validate_string($_GET['usr']) && validate_string($_GET['state'])){ //si el usuario tiene permiso de acceder a esa pagina
 		$id= validate_data($_GET['usr']);
 		$value= validate_data($_GET['state']);
 		if( $value == 1 ) {

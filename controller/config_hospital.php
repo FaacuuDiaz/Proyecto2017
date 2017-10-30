@@ -19,7 +19,10 @@
 			$template=$twig->loadTemplate("config_hospital.twig");
 			$template->display(array("rol_user"=>$_SESSION['rol'],"info"=>$info));
 		}	
-		else{
+		else {
+			$right=(validate_string($_POST['title']) && validate_string($_POST['descrpt']) && validate_string($_POST['pagination']) && validate_string($_POST['email']) && validate_string($_POST['enabled']));
+			if($right) {
+			
 			$title=validate_data($_POST['title']);
 			$descrpt=validate_data($_POST['descrpt']);
 			$pagination=validate_data($_POST['pagination']);
@@ -28,9 +31,13 @@
 
 			Repository_Hospital::update_privateInfo($title,$descrpt,$email,$pagination,$enabled);
 			header("Location:config_hospital.php");
-		}
+			}
+			else{
+				header('Location:index.php');	
+			}
 	
-	}
+		}
+	}	
 	else{
 		header('Location:index.php');
 	}

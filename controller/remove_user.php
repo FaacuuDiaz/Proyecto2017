@@ -13,7 +13,7 @@
 	$destroy_user = Repository_User::can_user($_SESSION['rol'],$user_destroy);//verifico si el rol puede eliminar un usuario*/
 
 	$ok=check_permission('user_destroy');
-	if($ok){
+	if($ok && validate_string($_GET['usr'])){
 		$id=validate_data($_GET['usr']);
 		Repository_User::remove_user($id);
 		header('Location:config_users.php');

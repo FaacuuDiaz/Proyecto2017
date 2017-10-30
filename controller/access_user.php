@@ -18,15 +18,21 @@ $withoutData=(validate_string($user) && validate_string($pass)); // verifico que
 if ($exist && $withoutData) {
 
     $habilitado = Repository_Hospital::get_infoEnabled(); //obtengo si la pagina no esta bloqueada
-    $permission = Repository_Permission::get_id_permission("config"); //optengo el id del permiso configuracion maestra
     $user_data  = Repository_User::get_user($user); // obtengo el usuario
     $check_user_rol = Repository_User::check_id_role($user_data[0][0]); // verifico si tiene el usuario algun rol
 
     //var_dump($check_user_rol);
     if ($check_user_rol){
+        $permission = Repository_Permission::get_id_permission("config"); //optengo el id del permiso configuracion maestra
         $user_rol = Repository_User::get_id_role($user_data[0][0]); // obtengo el id del rol del usuario
-        $ok = Repository_User::can_user($user_rol, $permission); // verifico si el rol del usuario tiene el permiso de configuracion maestra
-    }//else{echo "puto";}}     
+        foreach ($user_rol as $value) {
+            $ok = Repository_User::can_user($value[0], $permission); // verifico si el rol del usuario tiene el permiso de configuracion maestra
+            if ($ok){
+                break;
+            }    
+        }
+        
+    } 
         if ($habilitado == 1 || $ok) {
                 // si el sitio no esta bloqueado o el usuario tiene permiso de configuracion maestra
                 //$result = Repository_User::get_user($user);//obtengo la informacion del usuario
