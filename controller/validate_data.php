@@ -28,6 +28,12 @@
     }
     return false;
   }
+  function validate_tel($data){
+    if (gettype($data)=='string' || !validate_void($data) ){
+      return true;
+    }
+    return false;
+  }
 
 
 

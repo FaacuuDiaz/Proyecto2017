@@ -10,8 +10,9 @@ require_once "../model/Repository_Patient.php";
 require_once "../model/Repository_User.php";
 require_once "../model/Repository_Permission.php";
 
-$update_patient = Repository_Permission::get_id_permission('paciente_update'); //obtengo en id del permiso para actualizar
-$patient_update = Repository_User::can_user($_SESSION['rol_id'], $update_patient); //verifico si el rol puede actualizar un usuario
+/*$update_patient = Repository_Permission::get_id_permission('paciente_update'); //obtengo en id del permiso para actualizar
+$patient_update = Repository_User::can_user($_SESSION['rol_id'], $update_patient); //verifico si el rol puede actualizar un usuario*/
+$patient_update= check_permission('paciente_update');
 
 if ($patient_update) {
     $id       = validate_data($_GET['ptn']);
@@ -23,19 +24,3 @@ if ($patient_update) {
 } else {
     header('Location:index.php');
 }
-
-/*if (isset($_SESSION['rol'])) {
-$id          = validate_data($_GET['ptn']);
-$patien      = Repository_Patient::get_patient($id);
-$docs        = Repository_Patient::get_TypeDocs();
-$social      = Repository_Patient::get_SocialWorks();
-$datosDem    = Repository_DatosDem::get_DatosDem($patien[0]['datos_demograficos']);
-$calefaccion = Repository_DatosDem::get_tipoCalefaccion();
-$agua        = Repository_DatosDem::get_tipoAgua();
-$vivienda    = Repository_DatosDem::get_tipoVivienda();
-
-$template = $twig->loadTemplate('register_patient.twig');
-$template->display(array("rol_user" => $_SESSION['rol'], "patient" => $patien, "update" => 1, "docs" => $docs, "social" => $social, "datosDem" => $datosDem, "calefaccion" => $calefaccion, "agua" => $agua, "vivienda" => $vivienda));
-} else {
-header('Location:index.php');
-}*/

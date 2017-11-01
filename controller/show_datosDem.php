@@ -11,8 +11,10 @@ require_once "../model/Repository_DatosDem.php";
 require_once "../model/Repository_User.php";
 require_once "../model/Repository_Permission.php";
 
-$dd_show = Repository_Permission::get_id_permission('demographic_show'); //obtengo en id del permiso para mostrar
-$show_dd = Repository_User::can_user($_SESSION['rol_id'], $dd_show); //verifico si el rol puede mostrar el dd
+/*$dd_show = Repository_Permission::get_id_permission('demographic_show'); //obtengo en id del permiso para mostrar
+$show_dd = Repository_User::can_user($_SESSION['rol_id'], $dd_show); //verifico si el rol puede mostrar el dd*/
+
+$show_dd=check_permission('demographic_show');
 if ($show_dd) {
     // si tiene el permiso donde puede mostar un dd
     $id       = validate_data($_GET['ptn']);

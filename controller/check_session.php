@@ -18,7 +18,7 @@
 				}
 			}
 			else{
-				$ret=evaluate_permission($permissions[0][0],$id_permission);
+				$ret=evaluate_permission($permission_name);
 			}
 		}	
 		return $ret;

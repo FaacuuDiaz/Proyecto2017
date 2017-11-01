@@ -10,7 +10,6 @@
 
 
 	$ok=check_permission("config"); //chequeo si el usuario tiene el permiso
-
 	$habilitado=Repository_Hospital::get_infoEnabled();//verifico si la pagina no esta blockeada
 	
 	if ($habilitado==1 || $ok ){

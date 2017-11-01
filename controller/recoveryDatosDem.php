@@ -12,8 +12,10 @@ require_once "../model/Repository_DatosDem.php";
 require_once "../model/Repository_User.php";
 require_once "../model/Repository_Permission.php";
 
-$dd_update = Repository_Permission::get_id_permission('demographic_update'); //obtengo en id del permiso para eliminar
-$update_dd = Repository_User::can_user($_SESSION['rol_id'], $dd_update);
+/*$dd_update = Repository_Permission::get_id_permission('demographic_update'); //obtengo en id del permiso para eliminar
+$update_dd = Repository_User::can_user($_SESSION['rol_id'], $dd_update);*/
+
+$update_dd=check_permission('demographic_update');
 
 if ($update_dd) {
     $id          = validate_data($_GET['dd']);

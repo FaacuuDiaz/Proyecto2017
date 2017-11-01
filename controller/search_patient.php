@@ -8,8 +8,7 @@
 	$paciente_index=Repository_Permission::get_id_permission("paciente_index");
 	$ok=Repository_User::can_user($_SESSION['rol_id'],$paciente_index);
 
-	if($ok){ //si el usuario tiene permiso de acceder a esa pagina
-		
+	if($ok){ //si el usuario tiene permiso de acceder a esa pagina 
 		$docs   = Repository_Patient::get_TypeDocs();
 		$template = $twig ->loadTemplate("search_patient.twig");
 		$template->display(array("rol_user"=>$_SESSION['rol'],"docs" => $docs));

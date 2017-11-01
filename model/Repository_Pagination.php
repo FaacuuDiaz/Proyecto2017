@@ -137,7 +137,7 @@
     {
         $name    = "%" . $name . "%";
         $con     = Connection::open_connection();
-        $consult = "SELECT * FROM usuario WHERE id<>:id and nombre LIKE :name LIMIT $from , $cant";
+        $consult = "SELECT * FROM usuario WHERE id<>:id and username LIKE :name LIMIT $from , $cant";
         $sen     = $con->prepare($consult);
         $sen->bindParam(':name', $name);
         $sen->bindParam(':id',$id);
@@ -163,7 +163,7 @@
     {
         $name    = "%" . $name . "%";
         $con     = Connection::open_connection();
-        $consult = "SELECT * FROM usuario WHERE id<>:id and nombre LIKE :name and activo=:estado LIMIT $from , $cant";
+        $consult = "SELECT * FROM usuario WHERE id<>:id and username LIKE :name and activo=:estado LIMIT $from , $cant";
         $sen     = $con->prepare($consult);
         $sen->bindParam(':id',$id);
         $sen->bindParam(':name', $name);

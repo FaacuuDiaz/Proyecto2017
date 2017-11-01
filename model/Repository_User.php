@@ -91,6 +91,17 @@ class Repository_User
         Connection::close_connection();
         return $result;
     }
+    public static function get_id_user($id)
+    {
+        $con     = Connection::open_connection();
+        $consult = "SELECT * FROM usuario WHERE id=:id";
+        $sen     = $con->prepare($consult);
+        $sen->bindParam(':id', $id);
+        $sen->execute();
+        $result = $sen->fetchAll();
+        Connection::close_connection();
+        return $result;
+    }
 
     public static function get_role($id)
     {
