@@ -67,9 +67,10 @@ if ($ok) {
     }    
 
     $docs = Repository_Patient::get_TypeDocs();
+    $delete = check_permission('paciente_destroy');
     if ($content['content']!='') {
         $template = $twig->loadTemplate("search_patient.twig");
-        $template->display(array("rol_user" => $_SESSION['rol'], "docs" => $docs, 'patients_search' => $content["content"],'actual'=>$content['actual'], 'pages'=>$content['pages'], 'ruta'=>'return_search_patient.php'));
+        $template->display(array("rol_user" => $_SESSION['rol'], "docs" => $docs,"delete"=>$delete ,'patients_search' => $content["content"],'actual'=>$content['actual'], 'pages'=>$content['pages'], 'ruta'=>'return_search_patient.php'));
     } else {
         $template = $twig->loadTemplate("search_patient.twig");
         $template->display(array("rol_user" => $_SESSION['rol'], "docs" => $docs));

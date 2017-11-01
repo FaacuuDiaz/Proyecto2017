@@ -28,11 +28,12 @@ $right=(validate_string($_POST['name']) && validate_string($_POST['lastname']) &
 
     if ($update == 1 && $ok) {
         $existe = Repository_User::check_update($user, $email, $id);
+
         if ($existe || !$right) {
             $error    = "Ya existe un usuario con ese usuario y/o email.";
-            $user     = Repository_User::get_user($_SESSION['user']);
-            $template = $twig->loadTemplate('profile_user.twig');
-            $template->display(array('rol_user' => $_SESSION['rol'], 'info' => $user, 'error' => $error));
+            $user     = Repository_User::get_id_user($id);
+            $template=$twig->loadTemplate('register.twig');
+            $template->display(array('rol_user' => $_SESSION['rol'], 'user' => $user[0], 'error' => $error));
 
         } else {
             Repository_User::update_user($id, $name, $lastname, $user, $pass, $email);

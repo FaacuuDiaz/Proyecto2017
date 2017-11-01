@@ -38,7 +38,10 @@
     			<td>{{'Bloqueado'}}</td>
     			{%endif%}
     			<td><a href="changeState_user.php?usr={{us['id']}}&state={{us['activo']}}"><img src="../view/img/mas.png" alt="Listar" height="40" width="40"></a></td>
-	        <td><a href="remove_user.php?usr={{us['id']}}"><img src="../view/img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>
+    			<td><a href="register.php?usr={{us['username']}}"><img src="../view/img/modificar.png" alt="Listar" height="40" width="40"></a></td>
+	        	<td><a href="remove_user.php?usr={{us['id']}}"  onclick="if(!confirm('¿Desea eliminar el usuario?'))return false;"><img src="../view/img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>
+    			
+
 		       
 	        </tr>
 	        {% endfor %}

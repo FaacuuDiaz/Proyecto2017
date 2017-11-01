@@ -31,7 +31,7 @@ if ($ok) {
     $update = validate_data($_POST['updt']);
 
 
-    $right=(validate_string($_POST['name']) && validate_string($_POST['lastname']) && validate_string($_POST['address']) && validate_string($_POST['date']) && validate_string($_POST['gender']) && validate_string($_POST['typeDoc']) && validate_string($_POST['dni']) && validate_string($_POST['phone']) && validate_string($_POST['socialWork']));//verifico si es que no se ingresaron valores en blanco y sanitizados
+    $right=(validate_string($_POST['name']) && validate_string($_POST['lastname']) && validate_string($_POST['address']) && validate_string($_POST['date']) && validate_string($_POST['gender']) && validate_string($_POST['typeDoc']) && validate_string($_POST['dni']) && validate_tel($_POST['phone']) && validate_string($_POST['socialWork']));//verifico si es que no se ingresaron valores en blanco y sanitizados
 
     /*$patient_update = Repository_Permission::get_id_permission("paciente_update");
     $updatePatient  = Repository_User::can_user($_SESSION['rol_id'], $patient_update);*/
@@ -42,7 +42,12 @@ if ($ok) {
         $dd     = validate_data($_POST['dd']);
         $existe = Repository_Patient::check_update($typeDoc, $dni, $id);
         if ($existe || !$right) {
+            if($existe){
             $error = "Ya existe un paciente con ese tipo y numero de documento.";
+            }
+            else{
+                 $error = "Hay campos vacios o con datos incorrectos.";
+            }
 
             $patien   = Repository_Patient::get_patient($id);
             $docs     = Repository_Patient::get_TypeDocs();
@@ -66,7 +71,12 @@ if ($ok) {
 
         $existe = Repository_Patient::check_existe($typeDoc, $dni);
         if ($existe || !$right) {
+            if($existe){
             $error = "Ya existe un paciente con ese tipo y numero de documento.";
+            }
+            else{
+                 $error = "Hay campos vacios o con datos incorrectos.";
+            }
 
             $demographic_new    = Repository_Permission::get_id_permission('demographic_new');
             $insert_demographic = Repository_User::can_user($_SESSION['rol_id'], $demographic_new);
