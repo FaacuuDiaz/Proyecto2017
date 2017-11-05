@@ -1,25 +1,7 @@
 <div class="col-sm-5"></div>
 <div class="col-sm-4"> 
   <ul class="pagination">
-
-    {# {% if actual > 1 %}
-        {% set anterior = actual - 1 %}
-        <li><a href={{"javascript:paginacion_paciente("~anterior~");"}}>{{'Anterior'}}</a></li>
-      {% endif %}  
-
-    {% for num in 1..pages %}
-      {% if actual == num %}
-          <li class="active"><a href={{"javascript:paginacion_paciente("~num~");"}}>{{num}}</a></li>
-      {% else %}        
-          <li><a href={{"javascript:paginacion_paciente("~num~");"}}>{{num}}</a></li>
-      {% endif %}
-    {% endfor %}
-
-    {% if actual < pages %}
-        {% set siguiente = actual + 1 %}
-        <li><a href={{"javascript:paginacion_paciente("~siguiente~");"}}>{{'Siguiente'}}</a></li>
-    {% endif %} #}
-
+    
     {% if actual > 1 %}
         {% set anterior = actual - 1 %}
         <li><a href="../controller/{{ruta}}?page={{anterior}}" >{{'Anterior'}}</a></li>

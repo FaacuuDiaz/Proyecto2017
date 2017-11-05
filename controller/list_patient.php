@@ -2,7 +2,7 @@
 
 	error_reporting(E_ALL);
 	ini_set('display_errors', '1');	
-	
+	require_once("initialize.php");
 	require_once('check_session.php');
 	require_once('incluir_twig.php');
 	require_once('pagination.php');
@@ -22,7 +22,7 @@
 		$delete = check_permission('paciente_destroy');
 
 		$t=$twig->loadTemplate('list_patient.twig');
-    	$tabla=$t->display(array('rol_user'=>$_SESSION['rol'],'patients'=>$content["content"], 'delete'=>$delete,'actual'=>$content['actual'], 'pages'=>$content['pages'], 'ruta'=>'list_patient.php'));
+    	$tabla=$t->display(array('general'=>$general,'patients'=>$content["content"], 'delete'=>$delete,'actual'=>$content['actual'], 'pages'=>$content['pages'], 'ruta'=>'list_patient.php'));
 	}
 	else{
 		header('Location:index.php');

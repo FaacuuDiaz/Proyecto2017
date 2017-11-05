@@ -1,7 +1,6 @@
 <?php
 	error_reporting(E_ALL);
 	ini_set('display_errors', '1');
-
 	require_once("check_session.php");
 	require_once('incluir_twig.php');
 	require_once("../model/Repository_Hospital.php");
@@ -14,10 +13,11 @@
 	
 	if ($habilitado==1 || $ok ){
 		if(isset($_SESSION['rol'])){
-			$mi_rol=$_SESSION['rol'];
-			$titulo=Repository_Hospital::get_Title();
+			//$mi_rol=$_SESSION['rol'];
+			require_once("initialize.php");
+			//$titulo=Repository_Hospital::get_Title();
 			$template = $twig -> loadTemplate('inicio.twig');
-			$template -> display(array('title'=>$titulo,'rol_user'=>$mi_rol));
+			$template -> display(array('general'=>$general));
 		}
 		else{
 			$template= $twig->loadTemplate('inicio.twig');

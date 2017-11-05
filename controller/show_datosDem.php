@@ -2,7 +2,7 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-
+require_once("initialize.php");
 require_once "incluir_twig.php";
 require_once "check_session.php";
 require_once "validate_data.php";
@@ -20,7 +20,7 @@ if ($show_dd) {
     $id       = validate_data($_GET['ptn']);
     $datosDem = Repository_DatosDem::get_datosDem($id);
     $template = $twig->loadTemplate('showDatosDem.twig');
-    $template->display(array("rol_user" => $_SESSION['rol'], "datosDem" => $datosDem));
+    $template->display(array("general"=>$general, "datosDem" => $datosDem));
 } else {
     header('Location:index.php');
 }

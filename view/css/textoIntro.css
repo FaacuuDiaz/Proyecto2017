@@ -38,9 +38,7 @@ input[type=submit] {
 }
 
 @media(max-width: 500px) {
-    body table {
-        display: none;
-    }
+
     body div ul {
         display: block;
     }

@@ -35,8 +35,7 @@
             {% if delete %}
 	           <td><a href="remove_patient.php?ptn={{ptn['id']}}" onclick="if(!confirm('¿Desea eliminar el usuario?'))return false;"><img src="../view/img/eliminar.png" alt="eliminar" height="40" width="40"></a></td>
             {% endif %}
-            <td><a href="show_datosDem.php?ptn={{ptn['datos_demograficos']}}"><img src="../view/img/datosDem.png" alt="Listar" height="40" width="45"></a></td>    
-            {# <td><button onclick="location.href='show_datosDem.php?ptn={{ptn['datos_demograficos']}}'">Datos Dem</button></td> #}
+            <td><a href="show_datosDem.php?ptn={{ptn['datos_demograficos']}}"><img src="../view/img/datosDem.png" alt="Listar" height="40" width="45"></a></td>
         </tr>
         {% endfor %}
     </table>

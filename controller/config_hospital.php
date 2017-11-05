@@ -1,7 +1,7 @@
 <?php  
 	error_reporting(E_ALL);
 	ini_set('display_errors', '1');
-
+	require_once("initialize.php");
 	require_once("incluir_twig.php");
 	require_once("check_session.php");
 	require_once("../model/Repository_Hospital.php");
@@ -17,7 +17,7 @@
 
 			$info=Repository_Hospital::get_privateInfo();
 			$template=$twig->loadTemplate("config_hospital.twig");
-			$template->display(array("rol_user"=>$_SESSION['rol'],"info"=>$info));
+			$template->display(array("general"=>$general,"info"=>$info));
 		}	
 		else {
 			$right=(validate_string($_POST['title']) && validate_string($_POST['descrpt']) && validate_string($_POST['pagination']) && validate_string($_POST['email']) && validate_string($_POST['enabled']));

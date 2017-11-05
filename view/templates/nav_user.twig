@@ -1,0 +1,42 @@
+<nav class="menu">
+	<ul>
+		<li><a href="../controller/">Inicio</a></li>
+		{% if general['paciente_new'] or general['paciente_index'] %}
+			<li class="submenu"><a>Pacientes <span class="caret"></span></a>
+				<ul class="children">
+					{% if general['paciente_new'] %}
+					<li><a href="../controller/register_patient.php">Alta Paciente</a></li>
+					{% endif %}
+					{% if general['paciente_index'] %}
+					<li><a href="../controller/list_patient.php">Listar Paciente</a></li>
+					<li><a href="../controller/search_patient.php">Buscar</a></li>
+					{% endif %}
+				</ul>
+			</li>
+		{% endif %}	
+		{% if general['roles'] or general['user_index'] or general['user_new'] %}
+			<li class="submenu"><a>Usuarios<span class="caret"></span></a>
+				<ul class="children">
+					{% if  general['user_update'] and general['roles'] %}
+					<li><a href="../controller/assingRoles_user.php">Roles</a></li>
+					{% endif %}
+					{% if general['user_index'] %}
+					<li><a href="../controller/search_user.php">Busqueda</a></li>
+					<li><a href="../controller/config_users.php">Listado</a></li>
+					{% endif %}
+					{% if general['user_new'] %}
+					<li><a href="../controller/register.php">Registrar</a></li>
+					{% endif %}
+
+				</ul>
+			</li>
+		{% endif %}	
+		{% if general['config'] %}
+		<li><a href="../controller/config_hospital.php">Configuracion</a></li>
+		{% endif %}
+		{% if general['user_update']%}
+		<li><a href="../controller/profile_user.php">Mi Perfil</a></li>
+		{% endif %}
+		<li><a href="../controller/logout.php">Cerrar Sesion</a></li>
+	</ul>
+</nav>

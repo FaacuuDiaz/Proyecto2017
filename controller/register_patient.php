@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-
+require_once("initialize.php");
 require_once "incluir_twig.php";
 require_once "check_session.php";
 require_once "../model/Repository_Patient.php";
@@ -28,9 +28,9 @@ if ($insert_user) {
         $calefaccion = Repository_DatosDem::get_tipoCalefaccion();
         $agua        = Repository_DatosDem::get_tipoAgua();
         $vivienda    = Repository_DatosDem::get_tipoVivienda();
-        $template->display(array("rol_user" => $_SESSION['rol'], "docs" => $docs, "social" => $social, "demografico" => $insert_demographic, "calefaccion" => $calefaccion, "agua" => $agua, "vivienda" => $vivienda));
+        $template->display(array("general"=>$general, "docs" => $docs, "social" => $social, "demografico" => $insert_demographic, "calefaccion" => $calefaccion, "agua" => $agua, "vivienda" => $vivienda));
     } else {
-        $template->display(array("rol_user" => $_SESSION['rol'], "docs" => $docs, "social" => $social, "demografico" => $insert_demographic));
+        $template->display(array("general"=>$general, "docs" => $docs, "social" => $social, "demografico" => $insert_demographic));
     }
 
 } else {

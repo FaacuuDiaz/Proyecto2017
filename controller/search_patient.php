@@ -1,5 +1,5 @@
 <?php  
-
+	require_once("initialize.php");
 	require_once("incluir_twig.php");
 	require_once("check_session.php");
 	require_once("../model/Repository_Permission.php");
@@ -11,7 +11,7 @@
 	if($ok){ //si el usuario tiene permiso de acceder a esa pagina 
 		$docs   = Repository_Patient::get_TypeDocs();
 		$template = $twig ->loadTemplate("search_patient.twig");
-		$template->display(array("rol_user"=>$_SESSION['rol'],"docs" => $docs));
+		$template->display(array("general"=>$general,"docs" => $docs));
 
 	}
 	else{

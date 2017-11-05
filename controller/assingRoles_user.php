@@ -1,7 +1,7 @@
 <?php
 	error_reporting(E_ALL);
 	ini_set('display_errors', '1');	
-	
+	require_once("initialize.php");
 	require_once("incluir_twig.php");
 	require_once("check_session.php");
 	require_once("../model/Repository_User.php");
@@ -22,7 +22,7 @@
 		$test = merge_data($users,sizeof($users));	
 
 		$template=$twig->loadTemplate('assingRoles_user.twig');
-		$template->display(array("rol_user"=>$_SESSION['rol'],"users"=>$test,"roles"=>$roles));
+		$template->display(array("general"=>$general,"users"=>$test,"roles"=>$roles));
 	}
 	else{
 		header('Location:index.php');

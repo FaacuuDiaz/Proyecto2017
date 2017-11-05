@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no ,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	{#<meta name="viewport" content="width=device-width, user-scalable=no ,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">#}
 	
 	
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -24,15 +24,15 @@
 		<a href="#" class="bt-menu"><img src="../view/img/icon-list.png" alt="menu" height="30" width="30"> Menú</a>
 	</div>	
 	<header><div class="titulo">
-		{% if title is defined %}
-			{{title}}
+		{% if general['title'] is defined %}
+			{{general['title']}}
 		{%else%}
 			Hospital DR. Ricardo Gutierrez
 		{%endif%}
 		</div>
 	{% block nav %}
-		{% if rol_user is defined %}
-			{% include 'nav_'~rol_user~'.twig' %}			
+		{% if general is defined %}
+			{% include 'nav_user.twig' %}			
 	    {% else %}
 	      	{% include 'nav_index.twig' %}
 	    {% endif %}

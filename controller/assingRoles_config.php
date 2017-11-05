@@ -1,5 +1,5 @@
 <?php  
-	
+	require_once("initialize.php");
 	require_once("validate_data.php");
 	require_once("check_session.php");
 	require_once("incluir_twig.php");
@@ -22,7 +22,7 @@
 			$roles=Repository_User::get_roles_user($id);
 		}
 
-		$template->display(array('rol_user'=>$_SESSION['rol'],'id'=>$id,'roles'=>$roles,'empty'=>sizeof($roles)==0,'text'=>$texto));
+		$template->display(array('general'=>$general,'id'=>$id,'roles'=>$roles,'empty'=>sizeof($roles)==0,'text'=>$texto));
 		
 	}
 	else{

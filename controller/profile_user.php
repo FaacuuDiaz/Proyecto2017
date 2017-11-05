@@ -1,7 +1,8 @@
 <?php  
 
 	error_reporting(E_ALL);
-	ini_set('display_errors', '1');	
+	ini_set('display_errors', '1');
+	require_once("initialize.php");	
 	require_once("incluir_twig.php");
 	require_once("check_session.php");
 	require_once("validate_data.php");
@@ -14,7 +15,7 @@
 
 		$user=Repository_User::get_user($_SESSION['user']);
 		$template = $twig -> loadTemplate('register.twig');
-		$template -> display(array('rol_user'=>$_SESSION['rol'],'user'=>$user[0]));
+		$template -> display(array('general'=>$general,'user'=>$user[0]));
 	}
 	else{
 		header('Location:index.php');

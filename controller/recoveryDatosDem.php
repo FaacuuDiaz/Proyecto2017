@@ -4,7 +4,7 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-
+require_once("initialize.php");
 require_once "incluir_twig.php";
 require_once "check_session.php";
 require_once "validate_data.php";
@@ -25,7 +25,7 @@ if ($update_dd) {
     $vivienda    = Repository_DatosDem::get_tipoVivienda();
 
     $template = $twig->loadTemplate('updateDatosDem.twig');
-    $template->display(array("rol_user" => $_SESSION['rol'], "datosDem" => $datosDem, "calefaccion" => $calefaccion, "agua" => $agua, "vivienda" => $vivienda));
+    $template->display(array("general"=>$general, "datosDem" => $datosDem, "calefaccion" => $calefaccion, "agua" => $agua, "vivienda" => $vivienda));
 } else {
     header('Location:index.php');
 }

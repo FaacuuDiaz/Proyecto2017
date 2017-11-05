@@ -2,7 +2,7 @@
 	
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-
+	require_once("initialize.php");
 	require_once("check_session.php");
 	require_once("validate_data.php");
 	require_once("../model/Repository_User.php");
@@ -18,10 +18,10 @@ ini_set('display_errors', '1');
 
 			$user=validate_data($_GET['usr']);
 			$info=Repository_User::get_user($user);
-			$template->display(array('rol_user'=>$_SESSION['rol'],'user'=>$info[0]));
+			$template->display(array('general'=>$general,'user'=>$info[0]));
 		}
 		else{
-			$template->display(array('rol_user'=>$_SESSION['rol']));
+			$template->display(array('general'=>$general));
 		}
 	}
 	else{
