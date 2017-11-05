@@ -1,0 +1,102 @@
+{% extends 'base.twig' %}
+{% block scripts %}
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<script>
+    $(document).ready(function(){
+        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'yyyy-mm-dd',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+</script>
+
+{% endblock %}
+
+{%block content%}
+
+	<p>Registrar Historia Clinica</p>
+	
+    <div class="row">
+
+    	<div class="col-sm-1"></div>
+    	<form action="../controller/registerData_patient.php" method="POST">
+
+			<input type="hidden" name="ptn" value="{{patient[0]['id']}}">
+			<input type="hidden" name="usr" value="{{usuario['id']}}"><!-- el id del usuario, no se bien cual es -->
+	<div class="col-sm-4">
+		
+		<div class="form-group"> <!-- Date input -->
+        <label class="control-label" for="date">Fecha:</label>
+        <input class="form-control" id="date" name="date" placeholder="AAAA-MM-DD" type="text" required />
+      </div>
+			<div class="form-group">
+			<label>Peso:</label><input type="number" name="peso" placeholder="Peso" required>
+			</div>
+			<div class="form-group">
+  		<label>Vacunas Completas: </label>
+  		<label class="radio-inline"><input type="radio" name="Vacunas" value ="0" required>Si</label>
+		<label class="radio-inline"><input type="radio" name="Vacunas" value ="1">No</label>
+		</div>  
+		<div class="form-group">
+			<label>Vacunas observaciones: </label>
+		<textarea class="form-control" name="vacobs" rows="5" placeholder="Ingrese las observaciones" required></textarea>
+		</div>
+			<div class="form-group">
+  		<label>Maduracion Acorde: </label>
+  		<label class="radio-inline"><input type="radio" name="Maduracion" value ="0" required>Si</label>
+		<label class="radio-inline"><input type="radio" name="Maduracion" value ="1">No</label>
+		</div>  
+		<div class="form-group">
+			<label>Maduracion observaciones: </label>
+		<textarea class="form-control" name="madobs" rows="5" placeholder="Ingrese las observaciones" required></textarea>
+		</div>
+		</div>
+<div class="col-sm-2">	
+</div>
+<div class="col-sm-4">
+		<div class="form-group">
+  		<label>Examen Fisico Normal: </label>
+  		<label class="radio-inline"><input type="radio" name="Fisico" value ="0" required>Si</label>
+		<label class="radio-inline"><input type="radio" name="Fisico" value ="1">No</label>
+		</div> 
+		<div class="form-group">
+			<label>Examen Fisico observaciones: </label>
+		<textarea class="form-control" name="efobs" rows="5" placeholder="Ingrese las observaciones" required></textarea>
+		</div> 
+		<div class="form-group">
+			<label>Percentilo Cefálico:</label><input type="number" name="pc" placeholder="pc">
+			</div>
+		<div class="form-group">
+			<label>Percentilo Perímetro Cefálico:</label><input type="number" name="ppc" placeholder="ppc">
+			</div>
+		<div class="form-group">
+			<label>Talla:</label><input type="number" name="talla" placeholder="talla">
+			</div>
+		<div class="form-group">
+			<label>Alimentacion: </label>
+		<textarea class="form-control" name="alimentacion" rows="5" placeholder="Ingrese las observaciones"></textarea>
+		</div>
+		<div class="form-group">
+			<label>Observaciones generales: </label>
+		<textarea class="form-control" name="genobs" rows="5" placeholder="Ingrese las observaciones"></textarea>
+		</div>
+	
+				<input type="submit" name="Aceptar" value="Aceptar"><br>			 
+			
+	</div>
+</form>
+	
+
+	
+</div>
+{%endblock%}
