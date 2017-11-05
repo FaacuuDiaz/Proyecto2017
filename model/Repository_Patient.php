@@ -3,27 +3,6 @@ require_once 'config.php';
 class Repository_Patient
 {
 
-    public static function get_TypeDocs()
-    {
-        $con     = Connection::open_connection();
-        $consult = "SELECT * FROM tipo_documento";
-        $sen     = $con->prepare($consult);
-        $sen->execute();
-        $result = $sen->fetchAll();
-        Connection::close_connection();
-        return $result;
-    }
-
-    public static function get_SocialWorks()
-    {
-        $con     = Connection::open_connection();
-        $consult = "SELECT * FROM obra_social";
-        $sen     = $con->prepare($consult);
-        $sen->execute();
-        $result = $sen->fetchAll();
-        Connection::close_connection();
-        return $result;
-    }
 
     public static function insert_patient($name, $lastname, $address, $dat, $gender, $typeDoc, $dni, $phone, $socialWork, $dd)
     {
@@ -48,7 +27,7 @@ class Repository_Patient
     public static function get_allPatients()
     {
         $con     = Connection::open_connection();
-        $consult = "SELECT tp.nombre AS tipo_doc, os.nombre AS obra_social, p.* FROM paciente p INNER JOIN obra_social os ON (p.obra_social_id=os.id) INNER JOIN tipo_documento tp ON (p.tipo_doc_id=tp.id)";
+        $consult = "SELECT * FROM paciente";
         $sen     = $con->prepare($consult);
         $sen->execute();
         $result = $sen->fetchAll();

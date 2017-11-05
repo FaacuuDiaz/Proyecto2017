@@ -50,8 +50,8 @@ if ($ok) {
             }
 
             $patien   = Repository_Patient::get_patient($id);
-            $docs     = Repository_Patient::get_TypeDocs();
-            $social   = Repository_Patient::get_SocialWorks();
+            $docs   = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-documento');
+            $social = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/obra-social');
             $template = $twig->loadTemplate('register_patient.twig');
             $template->display(array("general"=>$general, "patient" => $patien, "update" => 1, "docs" => $docs, "social" => $social, 'error' => $error));
 
@@ -81,11 +81,11 @@ if ($ok) {
             $demographic_new    = Repository_Permission::get_id_permission('demographic_new');
             $insert_demographic = Repository_User::can_user($_SESSION['rol_id'], $demographic_new);
 
-            $docs        = Repository_Patient::get_TypeDocs();
-            $social      = Repository_Patient::get_SocialWorks();
-            $calefaccion = Repository_DatosDem::get_tipoCalefaccion();
-            $agua        = Repository_DatosDem::get_tipoAgua();
-            $vivienda    = Repository_DatosDem::get_tipoVivienda();
+            $docs   = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-documento');
+            $social = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/obra-social');
+            $calefaccion = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-calefaccion');
+            $agua        = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-agua');
+            $vivienda    = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-vivienda');
 
             $template = $twig->loadTemplate('register_patient.twig');
             $template->display(array("general"=>$general, "docs" => $docs, "social" => $social, "demografico" => $insert_demographic, "calefaccion" => $calefaccion, "agua" => $agua, "vivienda" => $vivienda, "error" => $error));

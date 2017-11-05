@@ -19,6 +19,7 @@ if ($show_dd) {
     // si tiene el permiso donde puede mostar un dd
     $id       = validate_data($_GET['ptn']);
     $datosDem = Repository_DatosDem::get_datosDem($id);
+    $datosDem=get_data_API_demographic($datosDem[0]);
     $template = $twig->loadTemplate('showDatosDem.twig');
     $template->display(array("general"=>$general, "datosDem" => $datosDem));
 } else {

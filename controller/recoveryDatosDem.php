@@ -20,9 +20,9 @@ $update_dd=check_permission('demographic_update');
 if ($update_dd) {
     $id          = validate_data($_GET['dd']);
     $datosDem    = Repository_DatosDem::get_updateDatosDem($id);
-    $calefaccion = Repository_DatosDem::get_tipoCalefaccion();
-    $agua        = Repository_DatosDem::get_tipoAgua();
-    $vivienda    = Repository_DatosDem::get_tipoVivienda();
+    $calefaccion = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-calefaccion');
+    $agua        = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-agua');
+    $vivienda    = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-vivienda');
 
     $template = $twig->loadTemplate('updateDatosDem.twig');
     $template->display(array("general"=>$general, "datosDem" => $datosDem, "calefaccion" => $calefaccion, "agua" => $agua, "vivienda" => $vivienda));

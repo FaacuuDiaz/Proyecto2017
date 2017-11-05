@@ -39,9 +39,9 @@
       <td>No</td>
       {% endif %}
 
-        <td>{{dd['tipo_vivienda_id']}}</td>
-        <td>{{dd['tipo_calefaccion_id']}}</td>
-        <td>{{dd['tipo_agua_id']}}</td>
+        <td>{{dd['tipo_vivienda_id']['nombre']}}</td>
+        <td>{{dd['tipo_calefaccion_id']['nombre']}}</td>
+        <td>{{dd['tipo_agua_id']['nombre']}}</td>
         
 
        <td><a href="recoveryDatosDem.php?dd={{dd['id']}}"><img src="../view/img/modificar.png" alt="Listar" height="40" width="40"></a></td>

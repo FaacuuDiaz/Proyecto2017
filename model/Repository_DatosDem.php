@@ -58,7 +58,7 @@ class Repository_DatosDem
     public static function get_datosDem($id)
     {
         $con     = Connection::open_connection();
-        $consult = "SELECT ta.nombre AS tipo_agua_id, tc.nombre AS tipo_calefaccion_id, tv.nombre AS tipo_vivienda_id, dd.heladera, dd.electricidad, dd.mascota, dd.id FROM datos_demograficos dd INNER JOIN tipo_agua ta ON (dd.tipo_agua_id=ta.id) INNER JOIN tipo_calefaccion tc ON (dd.tipo_calefaccion_id=tc.id)  INNER JOIN tipo_vivienda tv ON (dd.tipo_vivienda_id=tv.id) WHERE dd.id=:id";
+        $consult = "SELECT * FROM datos_demograficos WHERE id=:id";
         $sen     = $con->prepare($consult);
         $sen->bindParam(':id', $id);
         $sen->execute();

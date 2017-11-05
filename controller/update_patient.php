@@ -17,8 +17,8 @@ $patient_update= check_permission('paciente_update');
 if ($patient_update) {
     $id       = validate_data($_GET['ptn']);
     $patien   = Repository_Patient::get_patient($id);
-    $docs     = Repository_Patient::get_TypeDocs();
-    $social   = Repository_Patient::get_SocialWorks();
+    $docs     = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-documento');
+    $social   = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/obra-social');
     $template = $twig->loadTemplate('register_patient.twig');
     $template->display(array("general"=>$general, "patient" => $patien, "update" => 1, "docs" => $docs, "social" => $social));
 } else {

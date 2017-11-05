@@ -66,5 +66,38 @@
 
 	}
 
+	function get_JSON_from_page($url){
+		$homepage=file_get_contents($url);
+		return json_decode($homepage,true);
+	}
+
+
+	function get_data_API_patient($patient){ //para un paciente en particular matcheo sus datos con los de la api
+		$ar=[];
+		foreach ($patient as $key) {
+			$obra=get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/obra-social/'.$key['obra_social_id']);
+			$doc=get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-documento/'.$key['tipo_doc_id']);
+			$key['obra_social_id']=$obra;
+			$key['tipo_doc_id']=$doc;
+
+			array_push($ar,$key);
+
+
+		}
+		return $ar;
+	}
+
+	function get_data_API_demographic($demographic){ //para un paciente en particular matcheo sus datos con los de la api
+		$ar=[];
+		$vivienda=get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-vivienda/'.$demographic['tipo_vivienda_id']);
+		$calefaccion=get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-calefaccion/'.$demographic['tipo_calefaccion_id']);
+		$agua=get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-agua/'.$demographic['tipo_agua_id']);
+		$demographic['tipo_vivienda_id']=$vivienda;
+		$demographic['tipo_calefaccion_id']=$calefaccion;
+		$demographic['tipo_agua_id']=$agua;		
+		
+		array_push($ar, $demographic);
+		return $ar;
+	}
 
 ?>

@@ -20,6 +20,8 @@
 		$content = pagination('patients');
 
 		$delete = check_permission('paciente_destroy');
+		$pacientes=$content['content'];
+		$content['content']=get_data_API_patient($pacientes);//busco y macheo los datos de la api con los del pacientes
 
 		$t=$twig->loadTemplate('list_patient.twig');
     	$tabla=$t->display(array('general'=>$general,'patients'=>$content["content"], 'delete'=>$delete,'actual'=>$content['actual'], 'pages'=>$content['pages'], 'ruta'=>'list_patient.php'));

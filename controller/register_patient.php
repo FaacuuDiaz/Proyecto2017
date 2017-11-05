@@ -19,15 +19,15 @@ if ($insert_user) {
 
     $insert_demographic = Repository_User::can_user($_SESSION['rol_id'], $demographic_new); // verifico si el rol puede insertar datos demograficos
 
-    $docs   = Repository_Patient::get_TypeDocs();
-    $social = Repository_Patient::get_SocialWorks();
+    $docs   = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-documento');
+    $social = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/obra-social');
 
     $template = $twig->loadTemplate('register_patient.twig');
 
     if ($insert_demographic) {
-        $calefaccion = Repository_DatosDem::get_tipoCalefaccion();
-        $agua        = Repository_DatosDem::get_tipoAgua();
-        $vivienda    = Repository_DatosDem::get_tipoVivienda();
+        $calefaccion = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-calefaccion');
+        $agua        = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-agua');
+        $vivienda    = get_JSON_from_page('https://api-referencias.proyecto2017.linti.unlp.edu.ar/tipo-vivienda');
         $template->display(array("general"=>$general, "docs" => $docs, "social" => $social, "demografico" => $insert_demographic, "calefaccion" => $calefaccion, "agua" => $agua, "vivienda" => $vivienda));
     } else {
         $template->display(array("general"=>$general, "docs" => $docs, "social" => $social, "demografico" => $insert_demographic));

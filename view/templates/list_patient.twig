@@ -28,8 +28,8 @@
     		{%else%}
     			<td>{{'Femenino'}}</td>
     		{%endif%}
-    		<td>{{ptn['obra_social']}}</td>
-    		<td>{{ptn['tipo_doc']}}</td>
+    		<td>{{ptn['obra_social_id']['nombre']}}</td>
+    		<td>{{ptn['tipo_doc_id']['nombre']}}</td>
     		<td>{{ptn['numero']}}</td>		
 	        <td><a href="update_patient.php?ptn={{ptn['id']}}&updt=1"><img src="../view/img/modificar.png" alt="Listar" height="40" width="40"></a></td>
             {% if delete %}
